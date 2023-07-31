@@ -36,7 +36,7 @@
                         <a href="#" id="view-product-tab">View</a>
                     </li>
                     <li>
-                        <a href="#" id="add-service-tab" data-toggle="modal" data-target="#ModalCenter">Add Product</a>
+                        <a href="#" id="add-product-tab" data-toggle="modal" data-target="#ModalCenter">Add Product</a>
                     </li>
                     
                 </ul>

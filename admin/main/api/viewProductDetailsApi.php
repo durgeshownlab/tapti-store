@@ -21,7 +21,7 @@
             <div class="modal-body">
                 <div class="d-flex">
                     <div class="">
-                        <img src="../../images/'.$row['image'].'" class="img-fluid" alt="" style="height: 200px">
+                        <img src="../../images/'.$row['image'].'" class="img-fluid rounded" alt="" style="width: 200px; height: auto; max-height: 200px; max-width: 200px;">
                     </div>
                     <div class="col">
                         <div class="row">
@@ -42,6 +42,28 @@
                         </div>
                     </div>
                 </div><br/><hr/>
+                
+                <b>Related Images:</b><br/>
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center" style="overflow-x: auto">';
+
+                    $sql_image = "select * from product_images where product_id={$_POST['product_id']} and is_deleted=0";
+                    $result_image=mysqli_query($conn, $sql_image);
+
+                    if(mysqli_num_rows($result_image)>0)
+                    {
+                        while($row_image=mysqli_fetch_assoc($result_image))
+                        {
+                            $output .='
+                                <div class="m-2">
+                                    <img src="../../images/'.$row_image['image_path'].'" class="img-fluid rounded" alt="" style="width: 200px; height: auto; max-height: 200px; max-width: 200px;">
+                                </div>';
+                        }
+                    }
+        
+        $output .='
+                    </div>
+                </div><hr/>
 
                 <b>Discription:</b><br/>
                 <div class="container-fluid">
