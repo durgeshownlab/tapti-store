@@ -10,6 +10,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- toaster  css  -->
+    <link href="../assets/plugins/toastr/css/toastr.min.css" rel="stylesheet">
+
     <script src="js/modernizr-3.6.0.min.js"></script>
 
 
