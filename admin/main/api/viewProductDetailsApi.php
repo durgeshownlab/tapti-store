@@ -5,7 +5,7 @@
 
     $output='';
 
-    $sql="select products.product_name as name, products.product_image as image, products.product_price as price, products.product_desc as description, category.name as category, sub_category.name as sub_category from products join sub_category on sub_category.sub_category_id=products.sub_category_id join category on category.id=sub_category.sub_category_id where products.product_id={$_POST['product_id']} and products.is_deleted=0";
+    $sql="select products.product_name as name, products.product_image as image, products.product_price as price, products.product_desc as description, category.name as category, sub_category.name as sub_category from products join sub_category on sub_category.sub_category_id=products.sub_category_id join category on sub_category.category_id=category.id where products.product_id={$_POST['product_id']} and products.is_deleted=0";
     $result=mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($result)==1)
@@ -45,7 +45,7 @@
                 
                 <b>Related Images:</b><br/>
                 <div class="container-fluid">
-                    <div class="d-flex align-items-center" style="overflow-x: auto">';
+                    <div class="d-flex align-items-start" style="overflow-x: auto">';
 
                     $sql_image = "select * from product_images where product_id={$_POST['product_id']} and is_deleted=0";
                     $result_image=mysqli_query($conn, $sql_image);

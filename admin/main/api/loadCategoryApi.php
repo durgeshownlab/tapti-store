@@ -17,13 +17,11 @@
                                     <th>#</th>
                                     <th>Image</th>
                                     <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Description</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>';
-    $sql="select * from products where is_deleted=0";
+    $sql="select * from category where is_deleted=0";
     $result=mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($result)>0)
@@ -37,41 +35,28 @@
                             '.$i++.'
                         </td>
                         <td>
-                            <img src="../../images/'.$row['product_image'].'" class="w-40px rounded m-r-10" alt="">
+                            <img src="../../images/'.$row['image'].'" class="w-40px rounded m-r-10" alt="">
                         </td>
                         <td>
-                            <span>'.ucwords(substr($row['product_name'], 0, 30)).'';
+                            <span>'.ucwords(substr($row['name'], 0, 30)).'';
                         
-                        if(strlen($row['product_name'])>30)
+                        if(strlen($row['name'])>30)
                         {
                             $output .='...';
                         }
                     $output .='
                         </span>
                         </td>
-                        <td>&#8377
-                        '.number_format($row['product_price']).'
-                        </td>
-                        <td>
-                            <span>'.ucwords(substr($row['product_desc'], 0, 25)).'';
-                            
-
-                        if(strlen($row['product_desc'])>25)
-                        {
-                            $output .='...';
-                        }
-
-                    $output .='
-                        </span>
-                        </td>
+                        
+                        
                         <td class="text-right">
-                            <button type="button" class="btn btn-danger btn-sm delete-product-btn" data-product-id="'.$row['product_id'].'">
+                            <button type="button" class="btn btn-danger btn-sm delete-product-btn" data-product-id="'.$row['id'].'">
                                 <i class="fa-solid fa-trash-can px-2"></i>
                             </button>
-                            <button type="button" class="btn btn-success btn-sm update-product-btn" data-product-id="'.$row['product_id'].'" data-toggle="modal" data-target="#ModalCenter">
+                            <button type="button" class="btn btn-success btn-sm update-product-btn" data-product-id="'.$row['id'].'" data-toggle="modal" data-target="#ModalCenter">
                                 <i class="fa-solid fa-pen-to-square px-2"></i>
                             </button>
-                            <button type="button" class="btn btn-primary btn-sm view-product-btn" data-product-id="'.$row['product_id'].'" data-toggle="modal" data-target="#ModalCenter">
+                            <button type="button" class="btn btn-primary btn-sm view-product-btn" data-product-id="'.$row['id'].'" data-toggle="modal" data-target="#ModalCenter">
                                 <i class="fa-regular fa-eye px-2"></i>
                             </button>
                         </td>
