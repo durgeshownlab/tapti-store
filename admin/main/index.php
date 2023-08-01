@@ -46,10 +46,10 @@
                 <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-folder-open"></i> <span class="nav-text">Category</span> <span class="badge badge-danger nav-badge"></span></a>
                 <ul aria-expanded="false">
                     <li>
-                        <a href="#" id="view-service-tab">View</a>
+                        <a href="#" id="view-category-tab">View</a>
                     </li>
                     <li>
-                        <a href="#" id="add-service-tab" data-toggle="modal" data-target="#ModalCenter">Add Category</a>
+                        <a href="#" id="add-category-tab" data-toggle="modal" data-target="#ModalCenter">Add Category</a>
                         
                     </li>
                     

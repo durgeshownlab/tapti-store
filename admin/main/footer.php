@@ -28,6 +28,10 @@
 // ------------------------------------------------------------------------------
 // ----------------------- on click event coding area ---------------------------
 // ------------------------------------------------------------------------------
+
+            // ---------------------------------------------------------------------
+            // -------------------------- code for product tab ---------------------
+            // ---------------------------------------------------------------------
             // code for view product tab 
             $(document).on('click', '#view-product-tab', function(e){
                 e.preventDefault();
@@ -262,6 +266,9 @@
                         formData.append(`product_specification_value_${i}`, $(`#product-specification-value-${i}`).val());
                     }
 
+                    $("#add-product-submit-btn").html('Saving...');
+                    $("#add-product-submit-btn").attr('disabled', true);
+
                     $.ajax({
                         url: "api/addProductApi.php",
                         type: "POST",
@@ -271,6 +278,7 @@
                         success: function(data){
                             if(data==0)
                             {
+                                $("#add-product-submit-btn").html('Add Product');
                                 $('.modal-dialog').html(`
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -289,6 +297,7 @@
                                 }
                                 else if(data==1)
                                 {
+                                    $("#add-product-submit-btn").html('Add Product');
                                     loadProducts();
                                     $('.modal-dialog').html(`
                                     <div class="modal-content">
@@ -316,6 +325,217 @@
 
             });
 
+            //code for update product from in pop up
+            $(document).on('click', '.update-product-btn', function(e){
+                e.preventDefault();
+                let product_id=$(this).data('product-id');
+                console.log('View product: ', product_id);
+                
+                $.ajax({
+                    url: 'api/updateProductFormApi.php',
+                    type: 'POST',
+                    data: {product_id: product_id},
+                    success: function(data){
+                        $('.modal-dialog').html(data);
+                    }
+                });
+            });
+
+
+            //code for when click on delete btn on update product popup
+            $(document).on('click', '.image-delete-btn', function(e){
+                e.preventDefault();
+                let image_id=$(this).data('image-id');
+                let product_id=$(this).data('product-id');
+                console.log('delete image : ', image_id, 'for product ', product_id);
+                
+                $.ajax({
+                    url: 'api/deleteProductImageApi.php',
+                    type: 'POST',
+                    data: {image_id: image_id},
+                    success: function(data){
+                        if(data==1) {
+
+                            $.ajax({
+                                url: 'api/loadProductImageApi.php',
+                                type: 'POST',
+                                data: {product_id: product_id},
+                                success: function(data){
+                                    $(".other-images-container").html(data)
+                                }
+                            });
+                        } 
+                        else if(data==0) {
+                            console.log('couldn\'t delete the image');
+                        }
+                        else
+                        {
+                            console.log(data);
+                        }
+                    }
+                });
+            });
+
+
+            // when click on save changes button for updating the entered details
+            $(document).on("click", "#update-product-submit-btn", function(e){
+                e.preventDefault();
+                console.log("add clicked");
+                let product_name=$("#product-name").val();
+                let product_price=$("#product-price").val();
+                let product_category=$("#product-category").val();
+                let product_sub_category=$("#product-sub-category").val();
+                let product_main_image=$("#product-main-image")[0].files[0];
+                let product_other_image=$("#product-other-image")[0].files;
+                let product_desc=$("#product-desc").val();
+                let number_of_specification=$("#number-of-specification").val();
+                let existing_product_image_path=$("#existing-product-image-path").val();
+                let product_id=$(this).data('product-id');
+                
+                if(product_id=='')
+                {
+                    errorMsg("Something Went Wrong, Please Refresh the Page");
+                }
+                else if(product_name=='')
+                {
+                    warningMsg("Please Enter Product Name");
+                }
+                else if(product_price=='')
+                {
+                    warningMsg("Please Enter Price");
+                }
+                else if(!isValidNumber(product_price))
+                {
+                    warningMsg("Please Enter Valid Price");
+                }
+                else if(product_category=='')
+                {
+                    warningMsg("Please Select Category");
+                }
+                else if(product_sub_category=='')
+                {
+                    warningMsg("Please Select Sub Category");
+                }
+                else if(product_main_image && !validateFile(product_main_image))
+                {
+                    warningMsg("Please Select Valid Main Image");
+                }
+
+                else if(product_other_image.length>0 && !validateMultipleFile(product_other_image))
+                {
+                    warningMsg("Please Select Valid Other Product Image");
+                }
+                else if(product_desc=='')
+                {
+                    warningMsg("Please Enter Product Description");
+                }
+                else
+                {
+                    // $('#myform')[0]
+                    console.log(product_name, product_price, product_category, product_sub_category, product_main_image, product_other_image, product_desc);
+
+                    for (let i = 1; i <= number_of_specification; i++) {
+                        console.log($(`#product-specification-name-${i}`).val(), $(`#product-specification-value-${i}`).val());
+                    }
+                    
+                    let formData = new FormData();
+                    formData.append("product_id", product_id);
+                    formData.append("product_name", product_name);
+                    formData.append("product_price", product_price);
+                    formData.append("product_category", product_category);
+                    formData.append("product_sub_category", product_sub_category);
+                    formData.append("product_main_image", product_main_image);
+                    
+                    for (let i = 0; i < product_other_image.length; i++) {
+                        formData.append("product_other_image[]", product_other_image[i]);
+                    }
+                    formData.append("product_desc", product_desc);
+                    formData.append("number_of_specification", number_of_specification);
+                    formData.append("existing_product_image_path", existing_product_image_path);
+                    
+                    for (let i = 1; i <= number_of_specification; i++) {
+                        formData.append(`product_specification_id_${i}`, $(`#product-specification-id-${i}`).val());
+                        formData.append(`product_specification_name_${i}`, $(`#product-specification-name-${i}`).val());
+                        formData.append(`product_specification_value_${i}`, $(`#product-specification-value-${i}`).val());
+                    }
+                    $("update-product-submit-btn").html('Saving...');
+                    $("update-product-submit-btn").attr('disabled', 'true');
+                    $.ajax({
+                        url: "api/updateProductApi.php",
+                        type: "POST",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(data){
+                            if(data==0)
+                            {
+                                $("update-product-submit-btn").html('Save Changes');
+                                $('.modal-dialog').html(`
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Failed</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-center text-danger">Failed to Update Product Please Try Again</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    `);
+                                    console.log('Failed to Add product');
+                                }
+                                else if(data==1)
+                                {
+                                    $("update-product-submit-btn").html('Save Changes');
+                                    loadProducts();
+                                    $('.modal-dialog').html(`
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Successfull</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-center text-success">Product Updated Successfully</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                `);
+                                console.log('product added');
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+
+            });
+
+            // ---------------------------------------------------------------------
+            // ---------------------- code end for product tab ---------------------
+            // ---------------------------------------------------------------------
+
+            // ---------------------------------------------------------------------
+            // ---------------------- code start for category tab ---------------------
+            // ---------------------------------------------------------------------
+
+            // code for view category tab 
+            $(document).on('click', '#view-category-tab', function(e){
+                e.preventDefault();
+                $("#search-bar").attr('data-search-for', 'category');
+                console.log('view products tab clicked');
+                loadCategory();
+            });
+
+            // ---------------------------------------------------------------------
+            // ---------------------- code end for category tab ---------------------
+            // ---------------------------------------------------------------------
+
 
 // ------------------------------------------------------------------------------
 // ----------------------- function coding area --------------------------------- 
@@ -325,6 +545,19 @@
             {
                 $.ajax({
                     url: 'api/loadProductsApi.php',
+                    type: 'POST',
+                    data: {},
+                    success: function(data){
+                        $('.fluid-container').html(data);
+                    }
+                });
+            }
+
+            // function for loading the Category  
+            function loadCategory()
+            {
+                $.ajax({
+                    url: 'api/loadCategoryApi.php',
                     type: 'POST',
                     data: {},
                     success: function(data){
