@@ -56,7 +56,7 @@
                 });
             });
 
-            // code for user click on delete button 
+            // code for user click on delete product  button 
             $(document).on('click', '.delete-product-btn', function(e){
                 e.preventDefault();
                 let product_id=$(this).data('product-id');
@@ -71,47 +71,13 @@
                             if(data==0)
                             {
                                 console.log('couldn\'t delete the product ');
-                                toastr.success("Couldn't Delete The Product ", "Error", {
-                                    positionClass: "toast-bottom-center",
-                                    timeOut: 5e3,
-                                    closeButton: !0,
-                                    debug: !1,
-                                    newestOnTop: !0,
-                                    progressBar: !0,
-                                    preventDuplicates: !0,
-                                    onclick: null,
-                                    showDuration: "300",
-                                    hideDuration: "1000",
-                                    extendedTimeOut: "1000",
-                                    showEasing: "swing",
-                                    hideEasing: "linear",
-                                    showMethod: "fadeIn",
-                                    hideMethod: "fadeOut",
-                                    tapToDismiss: !1
-                                });
+                                errorMsg("Couldn't Delete The Product ");
                             }
                             else if(data==1)
                             {
                                 console.log('product deleted successfully');
                                 loadProducts();
-                                toastr.success("Product Deleted Sucessfully", "Success", {
-                                    positionClass: "toast-bottom-center",
-                                    timeOut: 5e3,
-                                    closeButton: !0,
-                                    debug: !1,
-                                    newestOnTop: !0,
-                                    progressBar: !0,
-                                    preventDuplicates: !0,
-                                    onclick: null,
-                                    showDuration: "300",
-                                    hideDuration: "1000",
-                                    extendedTimeOut: "1000",
-                                    showEasing: "swing",
-                                    hideEasing: "linear",
-                                    showMethod: "fadeIn",
-                                    hideMethod: "fadeOut",
-                                    tapToDismiss: !1
-                                });
+                                successMsg('Product Deleted Sucessfully');
                             }
                             else
                             {
@@ -174,7 +140,7 @@
                 else
                 {
                     $.ajax({
-                        url: "api/loadSubCategoryApi.php",
+                        url: "api/loadSubCategoryForDropDownApi.php",
                         type: "POST",
                         data: {category_id: category_id},
                         success: function(data){
@@ -532,9 +498,528 @@
                 loadCategory();
             });
 
+
+            //code for view category in pop up
+            $(document).on('click', '.view-category-btn', function(e){
+                e.preventDefault();
+                let category_id=$(this).data('category-id');
+                console.log('View category: ', category_id);
+                
+                $.ajax({
+                    url: 'api/viewCategoryDetailsApi.php',
+                    type: 'POST',
+                    data: {category_id: category_id},
+                    success: function(data){
+                        $('.modal-dialog').html(data);
+                    }
+                });
+            });
+
+            // code for user click on delete category button 
+            $(document).on('click', '.delete-category-btn', function(e){
+                e.preventDefault();
+                let category_id=$(this).data('category-id');
+                console.log('delete category click : ', category_id);
+                if(confirm('You realy want to delete the Category'))
+                {
+                    $.ajax({
+                        url: 'api/deleteCategoryApi.php',
+                        type: 'POST',
+                        data: {category_id: category_id},
+                        success: function(data){
+                            if(data==0)
+                            {
+                                console.log('couldn\'t delete the category');
+                                errorMsg("Couldn't Delete The Category");
+                            }
+                            else if(data==1)
+                            {
+                                console.log('Category deleted successfully');
+                                loadCategory();
+                                successMsg('Category Deleted Successfully');
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+            });
+
+            //code for add category form in pop up
+            $(document).on('click', '#add-category-tab', function(e){
+                e.preventDefault();
+                console.log('add category tab clicked');
+                
+                $.ajax({
+                    url: 'api/addCategoryFormApi.php',
+                    type: 'POST',
+                    data: {},
+                    success: function(data){
+                        $('.modal-dialog').html(data);
+                    }
+                });
+            });
+
+
+            // when click on add category  btn
+            $(document).on("click", "#add-category-submit-btn", function(e){
+                e.preventDefault();
+                console.log("add category clicked");
+                let category_name=$("#category-name").val();
+                let category_image=$("#category-image")[0].files[0];
+
+                if(category_name==''){
+                    warningMsg("Please Enter Category Name");
+                }
+                else if(!category_image){
+                    warningMsg("Please Select Image");
+                }
+                else if(!validateFile(category_image)){
+                    warningMsg("Please Select Valid Image");
+                }
+                else{
+                    // $('#myform')[0]
+                    console.log(category_name, category_image);
+                    
+                    let formData = new FormData();
+                    formData.append("category_name", category_name);
+                    formData.append("category_image", category_image);
+                    
+
+                    $("#add-category-submit-btn").html('Saving...');
+                    $("#add-category-submit-btn").attr('disabled', true);
+
+                    $.ajax({
+                        url: "api/addCategoryApi.php",
+                        type: "POST",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(data){
+                            if(data==0)
+                            {
+                                $("#add-category-submit-btn").html('Add Category');
+                                $('.modal-dialog').html(`
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Failed</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-center text-danger">Failed to Add Category Please Try Again</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    `);
+                                    console.log('Failed to Add product');
+                                }
+                                else if(data==1)
+                                {
+                                    $("#add-category-submit-btn").html('Add Category');
+                                    loadCategory();
+                                    $('.modal-dialog').html(`
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                            <h5 class="modal-title">Successfull</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-center text-success">Category Added Successfully</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                `);
+                                console.log('category added');
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+            });
+
+            //code for loading update category from in pop up
+            $(document).on('click', '.update-category-btn', function(e){
+                e.preventDefault();
+                let category_id=$(this).data('category-id');
+                console.log('View Category: ', category_id);
+                
+                $.ajax({
+                    url: 'api/updateCategoryFormApi.php',
+                    type: 'POST',
+                    data: {category_id: category_id},
+                    success: function(data){
+                        $('.modal-dialog').html(data);
+                    }
+                });
+            });
+
+            // when click on save changes button for updating the entered category details
+            $(document).on("click", "#update-category-submit-btn", function(e){
+                e.preventDefault();
+                console.log("add clicked");
+                let category_name=$("#category-name").val();
+                let category_id=$("#category-id").val();
+                let existing_category_image=$("#existing-category-image").val();
+                let category_image=$("#category-image")[0].files[0];
+                
+                if(category_id==''){
+                    errorMsg("Something Went Wrong, Please Refresh The Page");
+                }
+                else if(category_name==''){
+                    warningMsg("Please Enter Category Name");
+                }
+                else if(category_image && !validateFile(category_image)){
+                    warningMsg("Please Select Valid Image");
+                }
+                else
+                {
+                    console.log(category_name, category_image);
+                    
+                    let formData = new FormData();
+                    formData.append("category_name", category_name);
+                    formData.append("category_image", category_image);
+                    formData.append("category_id", category_id);
+                    formData.append("existing_category_image", existing_category_image);
+
+                    $("#add-category-submit-btn").html('Saving...');
+                    $("#add-category-submit-btn").attr('disabled', true);
+
+                    $.ajax({
+                        url: "api/updateCategoryApi.php",
+                        type: "POST",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(data){
+                            if(data==0)
+                            {
+                                $("#update-category-submit-btn").html('Save Changes');
+                                $('.modal-dialog').html(`
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Failed</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-center text-danger">Failed to Update Category, Please Try Again</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                `);
+                                console.log('Failed to update Category');
+                            }
+                            else if(data==1)
+                            {
+                                $("update-product-submit-btn").html('Save Changes');
+                                loadCategory();
+                                $('.modal-dialog').html(`
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Successfull</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-center text-success">Category Updated Successfully</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                `);
+                                console.log('Category Updated');
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+            });
+
+
             // ---------------------------------------------------------------------
-            // ---------------------- code end for category tab ---------------------
+            // ---------------------- code end for category tab --------------------
             // ---------------------------------------------------------------------
+
+            // ---------------------------------------------------------------------
+            // ------------------ code start for sub-category tab ------------------
+            // ---------------------------------------------------------------------
+
+            // code for view sub-category tab 
+            $(document).on('click', '#view-sub-category-tab', function(e){
+                e.preventDefault();
+                $("#search-bar").attr('data-search-for', 'sub-category');
+                console.log('view sub category tab clicked');
+                loadSubCategory();
+            });
+
+            //code for view sub category in pop up
+            $(document).on('click', '.view-sub-category-btn', function(e){
+                e.preventDefault();
+                let sub_category_id=$(this).data('sub-category-id');
+                console.log('View sub category: ', sub_category_id);
+                
+                $.ajax({
+                    url: 'api/viewSubCategoryDetailsApi.php',
+                    type: 'POST',
+                    data: {sub_category_id: sub_category_id},
+                    success: function(data){
+                        $('.modal-dialog').html(data);
+                    }
+                });
+            });
+
+            // code for user click on delete sub category button 
+            $(document).on('click', '.delete-sub-category-btn', function(e){
+                e.preventDefault();
+                let sub_category_id=$(this).data('sub-category-id');
+                console.log('delete category click : ', sub_category_id);
+                if(confirm('You realy want to delete the Category'))
+                {
+                    $.ajax({
+                        url: 'api/deleteSubCategoryApi.php',
+                        type: 'POST',
+                        data: {sub_category_id: sub_category_id},
+                        success: function(data){
+                            if(data==0)
+                            {
+                                console.log('couldn\'t delete the sub category');
+                                errorMsg("Couldn't Delete The Sub Category");
+                            }
+                            else if(data==1)
+                            {
+                                console.log('Sub Category deleted successfully');
+                                loadSubCategory();
+                                successMsg('Sub Category Deleted Successfully');
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+            });
+
+            //code for add sub category form in pop up
+            $(document).on('click', '#add-sub-category-tab', function(e){
+                e.preventDefault();
+                console.log('add sub category tab clicked');
+                
+                $.ajax({
+                    url: 'api/addSubCategoryFormApi.php',
+                    type: 'POST',
+                    data: {},
+                    success: function(data){
+                        $('.modal-dialog').html(data);
+                    }
+                });
+            });
+
+            // when click on add sub category  btn
+            $(document).on("click", "#add-sub-category-submit-btn", function(e){
+                e.preventDefault();
+                console.log("add sub category clicked");
+                let category_id=$("#product-category").val();
+                let sub_category_name=$("#sub-category-name").val();
+
+                if(category_id==''){
+                    warningMsg("Please Select Category");
+                }
+                else if(sub_category_name==''){
+                    warningMsg("Please Enter Sub Category Name");
+                }
+                else{
+                    // $('#myform')[0]
+                    console.log(category_id, sub_category_name);
+                    
+                    let formData = new FormData();
+                    formData.append("category_id", category_id);
+                    formData.append("sub_category_name", sub_category_name);
+                    
+
+                    $("#add-sub-category-submit-btn").html('Saving...');
+                    $("#add-sub-category-submit-btn").attr('disabled', true);
+
+                    $.ajax({
+                        url: "api/addSubCategoryApi.php",
+                        type: "POST",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(data){
+                            if(data==0)
+                            {
+                                $("#add-sub-category-submit-btn").html('Add Sub Category');
+                                $('.modal-dialog').html(`
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Failed</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-center text-danger">Failed to Add Sub Category Please Try Again</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                    `);
+                                    console.log('Failed to Add sub category');
+                                }
+                                else if(data==1)
+                                {
+                                    $("#add-category-submit-btn").html('Add Sub Category');
+                                    loadSubCategory();
+                                    $('.modal-dialog').html(`
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                            <h5 class="modal-title">Successfull</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-center text-success">Sub Category Added Successfully</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                `);
+                                console.log('sub category added');
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+            });
+
+            //code for loading update sub category from in pop up
+            $(document).on('click', '.update-sub-category-btn', function(e){
+                e.preventDefault();
+                let sub_category_id=$(this).data('sub-category-id');
+                console.log('update sub Category: ', sub_category_id);
+                
+                $.ajax({
+                    url: 'api/updateSubCategoryFormApi.php',
+                    type: 'POST',
+                    data: {sub_category_id: sub_category_id},
+                    success: function(data){
+                        $('.modal-dialog').html(data);
+                    }
+                });
+            });
+
+
+
+
+            // when click on save changes button for updating the entered sub category details
+            $(document).on("click", "#update-sub-category-submit-btn", function(e){
+                e.preventDefault();
+                console.log("add clicked");
+                
+                let category_id=$("#product-category").val();
+                let sub_category_id=$("#sub-category-id").val();
+                let sub_category_name=$("#sub-category-name").val();
+
+                if(sub_category_id==''){
+                    errorMsg("Something Went Wrong, Please Refresh the Page");
+                }
+                else if(category_id==''){
+                    warningMsg("Please Select Category");
+                }
+                else if(sub_category_name==''){
+                    warningMsg("Please Enter Sub Category Name");
+                }
+                else
+                {
+                    console.log(category_id, sub_category_name);
+                    
+                    let formData = new FormData();
+                    formData.append("category_id", category_id);
+                    formData.append("sub_category_id", sub_category_id);
+                    formData.append("sub_category_name", sub_category_name);
+                    
+
+                    $("#update-sub-category-submit-btn").html('Saving...');
+                    $("#update-sub-category-submit-btn").attr('disabled', true);
+
+                    $.ajax({
+                        url: "api/updateSubCategoryApi.php",
+                        type: "POST",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: function(data){
+                            if(data==0)
+                            {
+                                $("#update-sub-category-submit-btn").html('Save Changes');
+                                $('.modal-dialog').html(`
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Failed</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-center text-danger">Failed to Update Sub Category, Please Try Again</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                `);
+                                console.log('Failed to update sub Category');
+                            }
+                            else if(data==1)
+                            {
+                                $("#update-sub-category-submit-btn").html('Save Changes');
+                                loadSubCategory();
+                                $('.modal-dialog').html(`
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Successfull</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h2 class="text-center text-success">Sub Category Updated Successfully</h2>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                `);
+                                console.log('sub Category Updated');
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+            });
+
+
+            // ---------------------------------------------------------------------
+            // ------------------ code end for sub-category tab ------------------
+            // ---------------------------------------------------------------------
+
+
+
 
 
 // ------------------------------------------------------------------------------
@@ -558,6 +1043,19 @@
             {
                 $.ajax({
                     url: 'api/loadCategoryApi.php',
+                    type: 'POST',
+                    data: {},
+                    success: function(data){
+                        $('.fluid-container').html(data);
+                    }
+                });
+            }
+
+            // function for loading the Category  
+            function loadSubCategory()
+            {
+                $.ajax({
+                    url: 'api/loadSubCategoryApi.php',
                     type: 'POST',
                     data: {},
                     success: function(data){

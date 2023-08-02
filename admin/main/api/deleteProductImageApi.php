@@ -10,7 +10,7 @@
         $row=mysqli_fetch_assoc($result);
     }
 
-    $destination = '../../../images/'.$row['image_path'];
+    $destination = '../../../images/products/'.$row['image_path'];
     
     $sql="delete from product_images where image_id={$_POST['image_id']} and is_deleted=0";
     $result=mysqli_query($conn, $sql);

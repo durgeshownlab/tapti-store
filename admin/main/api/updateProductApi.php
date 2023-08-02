@@ -80,7 +80,7 @@ if(isset($_FILES['product_main_image']) && $_FILES['product_main_image']['error'
         $new_file_name = uniqid('', true) . '.' . $file_extension;
 
         // Specify the directory to which the file should be moved
-        $upload_directory = '../../../images/';
+        $upload_directory = '../../../images/products/';
 
         // Move the file to the upload directory
         $destination = $upload_directory . $new_file_name;
@@ -110,7 +110,7 @@ if(isset($_FILES['product_main_image']) && $_FILES['product_main_image']['error'
             
                 if($status)
                 {
-                    $existing_product_image_path='../../../images/'.$_POST['existing_product_image_path'];
+                    $existing_product_image_path='../../../images/products/'.$_POST['existing_product_image_path'];
                     if (file_exists($existing_product_image_path)) {
                         if (unlink($existing_product_image_path)) {
                             // File deletion successful
@@ -209,7 +209,7 @@ else if(isset($_FILES['product_other_image']) && is_array($_FILES["product_other
                 $new_file_name = uniqid('', true) . '.' . $file_extension;
 
                 // Specify the directory to which the file should be moved
-                $upload_directory = '../../../images/';
+                $upload_directory = '../../../images/products/';
 
                 // Move the file to the upload directory
                 $destination = $upload_directory . $new_file_name;
@@ -318,13 +318,13 @@ else if(isset($_FILES['product_other_image']) && is_array($_FILES["product_other
         $new_file_name = uniqid('', true) . '.' . $file_extension;
 
         // Specify the directory to which the file should be moved
-        $upload_directory = '../../../images/';
+        $upload_directory = '../../../images/products/';
 
         // Move the file to the upload directory
         $destination = $upload_directory . $new_file_name;
         if (move_uploaded_file($file_tmp_name, $destination)) 
         {
-            $existing_product_image_path='../../../images/'.$_POST['existing_product_image_path'];
+            $existing_product_image_path='../../../images/products/'.$_POST['existing_product_image_path'];
             if (file_exists($existing_product_image_path)) {
                 if (unlink($existing_product_image_path)) {
                     // File deletion successful
@@ -399,7 +399,7 @@ else if(isset($_FILES['product_other_image']) && is_array($_FILES["product_other
                                         $new_file_name = uniqid('', true) . '.' . $file_extension;
 
                                         // Specify the directory to which the file should be moved
-                                        $upload_directory = '../../../images/';
+                                        $upload_directory = '../../../images/products/';
 
                                         // Move the file to the upload directory
                                         $destination = $upload_directory . $new_file_name;

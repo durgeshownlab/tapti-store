@@ -79,7 +79,7 @@ $output .='
                     <label class="form-label">Main Image</label>
                     <input type="hidden" value="'.$row['image'].'" name="existing-product-image-path" id="existing-product-image-path">
                     <input type="file" class="form-control input-flat" name="product-main-image" id="product-main-image" required>
-                    <img src="../../images/'.$row['image'].'" class="img-fluid rounded pt-2" alt="" style="width: 100px; height: auto; max-height: 200px; max-width: 200px;">
+                    <img src="../../images/products/'.$row['image'].'" class="img-fluid rounded pt-2" alt="" style="width: 100px; height: auto; max-height: 200px; max-width: 200px;">
                 </div>
                 <div class="col form-group col-md-6">
                     <label class="form-label">Other Images</label>
@@ -95,7 +95,7 @@ $output .='
                         {
                             $output .='
                                 <div class="position-relative">
-                                    <img src="../../images/'.$row_image['image_path'].'" class="img-fluid rounded p-2" alt="" style="width: auto; height: 100px; max-height: 200px; max-width: 200px;">
+                                    <img src="../../images/products/'.$row_image['image_path'].'" class="img-fluid rounded p-2" alt="" style="width: auto; height: 100px; max-height: 200px; max-width: 200px;">
                                     <span class="bg-danger p-1 rounded position-absolute image-delete-btn" style="z-index: 9; top: 10px; right: 10%; cursor:pointer;" data-image-id="'.$row_image['image_id'].'" data-product-id="'.$_POST['product_id'].'">
                                         <i class="fa fa-trash"></i>
                                     </span>
