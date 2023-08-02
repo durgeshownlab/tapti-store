@@ -35,7 +35,7 @@
                             '.$i++.'
                         </td>
                         <td>
-                            <img src="../../images/'.$row['image'].'" class="w-40px rounded m-r-10" alt="">
+                            <img src="../../images/category/'.$row['image'].'" class="w-40px rounded m-r-10" alt="">
                         </td>
                         <td>
                             <span>'.ucwords(substr($row['name'], 0, 30)).'';
@@ -44,23 +44,23 @@
                         {
                             $output .='...';
                         }
-                    $output .='
-                        </span>
-                        </td>
-                        
-                        
-                        <td class="text-right">
-                            <button type="button" class="btn btn-danger btn-sm delete-product-btn" data-product-id="'.$row['id'].'">
-                                <i class="fa-solid fa-trash-can px-2"></i>
-                            </button>
-                            <button type="button" class="btn btn-success btn-sm update-product-btn" data-product-id="'.$row['id'].'" data-toggle="modal" data-target="#ModalCenter">
-                                <i class="fa-solid fa-pen-to-square px-2"></i>
-                            </button>
-                            <button type="button" class="btn btn-primary btn-sm view-product-btn" data-product-id="'.$row['id'].'" data-toggle="modal" data-target="#ModalCenter">
-                                <i class="fa-regular fa-eye px-2"></i>
-                            </button>
-                        </td>
-                    </tr>';
+            $output .='
+                    </span>
+                    </td>
+                    
+                    
+                    <td class="text-right">
+                        <button type="button" class="btn btn-danger btn-sm delete-category-btn" data-category-id="'.$row['id'].'">
+                            <i class="fa-solid fa-trash-can px-2"></i>
+                        </button>
+                        <button type="button" class="btn btn-success btn-sm update-category-btn" data-category-id="'.$row['id'].'" data-toggle="modal" data-target="#ModalCenter">
+                            <i class="fa-solid fa-pen-to-square px-2"></i>
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm view-category-btn" data-category-id="'.$row['id'].'" data-toggle="modal" data-target="#ModalCenter">
+                            <i class="fa-regular fa-eye px-2"></i>
+                        </button>
+                    </td>
+                </tr>';
         }
     }
 

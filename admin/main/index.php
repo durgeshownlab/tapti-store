@@ -60,12 +60,11 @@
                 <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-folder-tree"></i> <span class="nav-text">Sub Category</span> <span class="badge badge-danger nav-badge"></span></a>
                 <ul aria-expanded="false">
                     <li>
-                        <a href="#" id="view-service-tab">View</a>
+                        <a href="#" id="view-sub-category-tab">View</a>
                     </li>
                     <li>
-                        <a href="#" id="add-service-tab" data-toggle="modal" data-target="#ModalCenter">Add Sub Category</a>
+                        <a href="#" id="add-sub-category-tab" data-toggle="modal" data-target="#ModalCenter">Add Sub Category</a>
                     </li>
-                    
                 </ul>
             </li>
 

@@ -21,7 +21,7 @@
             <div class="modal-body">
                 <div class="d-flex">
                     <div class="">
-                        <img src="../../images/'.$row['image'].'" class="img-fluid rounded" alt="" style="width: 200px; height: auto; max-height: 200px; max-width: 200px;">
+                        <img src="../../images/products/'.$row['image'].'" class="img-fluid rounded" alt="" style="width: 200px; height: auto; max-height: 200px; max-width: 200px;">
                     </div>
                     <div class="col">
                         <div class="row">
@@ -56,7 +56,7 @@
                         {
                             $output .='
                                 <div class="m-2">
-                                    <img src="../../images/'.$row_image['image_path'].'" class="img-fluid rounded" alt="" style="width: 200px; height: auto; max-height: 200px; max-width: 200px;">
+                                    <img src="../../images/products/'.$row_image['image_path'].'" class="img-fluid rounded" alt="" style="width: 200px; height: auto; max-height: 200px; max-width: 200px;">
                                 </div>';
                         }
                     }

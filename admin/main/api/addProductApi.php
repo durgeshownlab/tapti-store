@@ -73,7 +73,7 @@ if ($file_error === UPLOAD_ERR_OK)
     $new_file_name = uniqid('', true) . '.' . $file_extension;
 
     // Specify the directory to which the file should be moved
-    $upload_directory = '../../../images/';
+    $upload_directory = '../../../images/products/';
 
     // Move the file to the upload directory
     $destination = $upload_directory . $new_file_name;
@@ -167,7 +167,7 @@ if($result)
                     $new_file_name = uniqid('', true) . '.' . $file_extension;
 
                     // Specify the directory to which the file should be moved
-                    $upload_directory = '../../../images/';
+                    $upload_directory = '../../../images/products/';
 
                     // Move the file to the upload directory
                     $destination = $upload_directory . $new_file_name;

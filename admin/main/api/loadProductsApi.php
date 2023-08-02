@@ -37,7 +37,7 @@
                             '.$i++.'
                         </td>
                         <td>
-                            <img src="../../images/'.$row['product_image'].'" class="w-40px rounded m-r-10" alt="">
+                            <img src="../../images/products/'.$row['product_image'].'" class="w-40px rounded m-r-10" alt="">
                         </td>
                         <td>
                             <span>'.ucwords(substr($row['product_name'], 0, 30)).'';
