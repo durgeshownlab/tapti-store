@@ -7394,3 +7394,421 @@ body.v-light .timeline:before {
 ---------------------------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* custom css  */
+
+.delivery-status-event-container
+{
+    width: 100%;
+    height: 75px;
+    background-color: #fff;
+    /* border-top: 1px solid #bcbcbc; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delivery-status-event
+{
+    width: fit-content;
+    height: 75px;
+    /* border: 1px solid rgb(25, 0, 255); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delivery-status-order-confirmed
+{
+    width: 150px;
+    height: 3px;
+    background-color: #26a541;
+    display: flex;
+    position: relative;
+}
+
+.delivery-status-order-canceled
+{
+    width: 150px;
+    height: 3px;
+    background-color: red;
+    display: flex;
+    position: relative;
+}
+
+.delivery-status-order-confirmed::before
+{
+    content: '';
+    width: 15px;
+    /* height: 25px; */
+    aspect-ratio: 1/1;
+    background-color: #26a541;
+    border-radius: 50px;
+
+    position: absolute;
+    left: 0%;
+    top: -200%;
+}
+
+.delivery-status-order-canceled::before
+{
+    content: '';
+    width: 15px;
+    /* height: 25px; */
+    aspect-ratio: 1/1;
+    background-color: red;
+    border-radius: 50px;
+
+    position: absolute;
+    left: 0%;
+    top: -200%;
+}
+
+.delivery-status-order-confirmed:last-child
+{
+    width: 0px;
+    height: 3px;
+    background-color: #26a541;
+    display: flex;
+    position: relative;
+}
+
+.delivery-status-order-canceled:last-child
+{
+    width: 0px;
+    height: 3px;
+    background-color: red;
+    display: flex;
+    position: relative;
+}
+
+
+
+.delivery-status-text
+{
+    width: 150px;
+    position: absolute;
+    top: -806%;
+    left: -50%;
+    font-size: 13px;
+    text-align: center;
+}
+
+.delivery-status-date-time
+{
+    width: 150px;
+    position: absolute;
+    bottom: -806%;
+    left: -50%;
+    font-size: 13px;
+    text-align: center;
+}
+
+.delivery-status-order-confirmed:last-child > .delivery-status-text
+{
+    width: 150px;
+    position: absolute;
+    top: -806%;
+    left: -50%;
+    font-size: 13px;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.delivery-status-order-confirmed:last-child > .delivery-status-date-time
+{
+    width: 150px;
+    position: absolute;
+    bottom: -806%;
+    left: -50%;
+    font-size: 13px;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.delivery-status-order-canceled:last-child > .delivery-status-text
+{
+    width: 150px;
+    color: red;
+    position: absolute;
+    top: -806%;
+    left: -50%;
+    font-size: 13px;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.delivery-status-order-canceled:last-child > .delivery-status-date-time
+{
+    width: 150px;
+    color: red;
+    position: absolute;
+    bottom: -806%;
+    left: -50%;
+    font-size: 13px;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+/* code for filter bar  */
+
+.sort-filter-bar-container
+{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.filter-button, 
+.sort-button,
+.export-button
+{
+    height: 90%;
+    width: fit-content;
+    /* border: 2px solid  red; */
+    background-color: #9068be;
+    color: #fff;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    margin-left: 5px;
+}
+
+.filter-button:hover,
+.sort-button:hover
+{
+    transition: 0.2s ease-in-out;
+}
+.filter-button:hover > .filter-list-container,
+.sort-button:hover > .sort-list-container
+{
+    display: flex;
+    transition: 0.2s ease-in-out;
+}
+
+.filter-list-container,
+.sort-list-container
+{
+    width: max-content;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 4px 10px -7px #000;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    color: #000000;
+    cursor: default;
+    display: none;
+    /* backdrop-filter: blur(25px); */
+}
+
+.filter-list,
+.sort-list
+{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-list p,
+.sort-list p
+{
+    width: fit-content;
+    height: fit-content;
+    margin: 5px 0;
+    margin-left: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: green;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+.payment-mode-filter
+{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-item,
+.sort-item
+{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    /* align-items: center; */
+    /* padding: 6px 5px; */
+    padding: 0 5px;
+    /* border: 1px solid red; */
+    /* border-radius: 5px; */
+}
+
+.filter-item:hover,
+.sort-item:hover
+{
+    background-color: #f1f3f6;
+    /* border: 1px solid red; */
+    /* border-radius: 5px; */
+}
+
+.filter-item input,
+.sort-item input
+{
+    height: 100%;
+    cursor: pointer;
+}
+.filter-item label,
+.sort-item label
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.date-range
+{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.date-range label
+{
+    padding: 0 5px;
+    color: #9068be;
+}
+
+#from,
+#to
+{
+    height: 90%;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #9068be;
+    color: #9068be;
+    padding: 5px;
+    outline: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(255, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url('../../assets/images/icon/calendar.png') no-repeat;
+    background-size: cover;
+    width: 15px;
+    height: 15px;
+    max-width: 15px;
+    max-height: 15px;
+    border-width: thin;
+    cursor: pointer;
+}
+
+#get-by-date-range
+{
+    height: 90%;
+    width: auto;
+    margin-left: 5px;
+    padding: 8px 20px;
+    border: none;
+    background-color: #9068be;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* code for search bar  */
+
+.search-bar
+{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #f0f5ff;
+    margin-left: 15px;
+}
+
+.search-btn
+{
+    /* width: 30px; */
+    /* aspect-ratio: 1/1; */
+    width: fit-content;
+    height: 90%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border: 1px solid #9068be;
+    padding: 5px;
+}
+
+.search-btn:hover
+{
+    background-color: #9068be;
+    color: #fff;
+}
+
+.search-btn:hover > .fa-magnifying-glass
+{
+    color: #fff;
+}
+
+.search-btn .fa-magnifying-glass
+{
+    font-size: 1.1rem;
+    color: #9068be;
+}
+
+#search
+{
+    width: fit-content;
+    min-width: 150px;
+    height: 90%;
+    /* padding: 5px; */
+    outline: none;
+    background-color: #fff;
+    /* border: 1px solid transparent; */
+    border: 1px solid #9068be;
+    border-right: none;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #2c2c2c;
+    padding: 5px;    
+}
+
+input[type="search"]::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+    height: 1em;
+    width: 1em;
+    border-radius: 50em;
+    background: url('../../assets/images/icon/cross-circle.png') no-repeat 50% 50%;
+    background-size: contain;
+    opacity: 0;
+    pointer-events: none;
+}
+
+input[type="search"]:focus::-webkit-search-cancel-button{
+    color: #9068be;
+    opacity: .7 ;
+    pointer-events: all;
+    cursor: pointer;
+}
+
