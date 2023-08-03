@@ -30,8 +30,242 @@
 // ------------------------------------------------------------------------------
 
             // ---------------------------------------------------------------------
-            // -------------------------- code for product tab ---------------------
+            // ---------------------- code start for order tab ---------------------
             // ---------------------------------------------------------------------
+
+            // code for view order tab 
+            $(document).on('click', '#orders-tab', function(e){
+                e.preventDefault();
+                $("#search-bar").attr('data-search-for', 'orders');
+                console.log('view Orders tab clicked');
+                loadOrders();
+            });
+
+            //code for view order in pop up
+            $(document).on('click', '.view-order-btn', function(e){
+                e.preventDefault();
+                let order_id=$(this).data('order-id');
+                console.log('View order: ', order_id);
+                
+                $.ajax({
+                    url: 'api/viewOrderDetailsApi.php',
+                    type: 'POST',
+                    data: {order_id: order_id},
+                    success: function(data){
+                        $('.modal-dialog').html(data);
+                    }
+                });
+            });
+
+        //***************************************************
+        //      code for filter 
+        //***************************************************
+
+            //code for payment method on change
+            $(document).on("change", "input[name=\"payment-mode[]\"]", function(e){
+                let sort_by=$('input[name="sort-by"]:checked').val();
+
+                let payment_method = [];
+                let delivery_status = [];
+
+                let from_date=$('#from').val();
+                let to_date=$('#to').val();
+
+                let order_status=0;
+
+                if($('#order-status-filter').is(':checked'))
+                {
+                    order_status = 1;
+                    console.log("Checkbox value:", order_status);
+                }
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    payment_method.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'api/sortFilterOrdersApi.php',
+                    type: 'POST',
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, order_status: order_status, from_date: from_date, to_date: to_date}, 
+                    success: function(data) {
+                        // console.log(data);
+                        console.log(delivery_status, payment_method, order_status, sort_by, from_date, to_date);
+                        $('.orders-table').html(data);
+                    }
+                });
+            });
+
+            //code for delivery status on change
+            $(document).on("change", "input[name=\"delivery-status[]\"]", function(e){
+                let sort_by=$('input[name="sort-by"]:checked').val();
+                let payment_method = [];
+                let delivery_status = [];
+                let order_status=0;
+
+                let from_date=$('#from').val();
+                let to_date=$('#to').val();
+
+                if($('#order-status-filter').is(':checked'))
+                {
+                    order_status = 1;
+                    console.log("Checkbox value:", order_status);
+                }
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    payment_method.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'api/sortFilterOrdersApi.php',
+                    type: 'POST',
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, order_status: order_status, from_date: from_date, to_date: to_date}, 
+                    success: function(data) {
+                        // console.log(data);
+                        console.log(delivery_status, payment_method, sort_by, order_status, from_date, to_date);
+                        $('.orders-table').html(data);
+                    }
+                });
+            });
+
+            //code for order status on change
+            $(document).on("change", "input[name=\"order-status\"]", function(e){
+                let sort_by=$('input[name="sort-by"]:checked').val();
+                let payment_method = [];
+                let delivery_status = [];
+                let order_status=0;
+
+                let from_date=$('#from').val();
+                let to_date=$('#to').val();
+
+                if($('#order-status-filter').is(':checked'))
+                {
+                    order_status = 1;
+                    console.log("Checkbox value:", order_status);
+                }
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    payment_method.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'api/sortFilterOrdersApi.php',
+                    type: 'POST',
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, order_status: order_status, from_date: from_date, to_date: to_date}, 
+                    success: function(data) {
+                        // console.log(data);
+                        console.log(delivery_status, payment_method, sort_by, order_status, from_date, to_date);
+                        $('.orders-table').html(data);
+                    }
+                });
+            });
+
+
+            //  ****************************************************
+            //      code for sorting the orders in admin pannel
+            //  ****************************************************
+            $(document).on("change", "input[name=\"sort-by\"]", function(e){
+                let sort_by=$('input[name="sort-by"]:checked').val();
+
+                let order_status=0;
+
+                if($('#order-status-filter').is(':checked'))
+                {
+                    order_status = 1;
+                    console.log("Checkbox value:", order_status);
+                }
+
+                let payment_method = [];
+                let delivery_status = [];
+
+
+                let from_date=$('#from').val();
+                let to_date=$('#to').val();
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    payment_method.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'api/sortFilterOrdersApi.php',
+                    type: 'POST',
+                    data: { sort_by: sort_by, payment_method: payment_method, delivery_status: delivery_status, order_status: order_status, from_date: from_date, to_date: to_date}, 
+                    success: function(data) {
+                        // console.log(data);
+                        console.log(delivery_status, payment_method, sort_by, order_status, from_date, to_date);
+
+                        $('.orders-table').html(data);
+                    }
+                });
+            });
+
+            //  ****************************************************
+            //      code  for exporting orders in excel
+            //  ****************************************************
+            $(document).on("click", ".export-button", function(e){
+                let sort_by=$('input[name="sort-by"]:checked').val();
+                let timestamp = new Date().getTime();
+
+                let payment_method = [];
+                let delivery_status = [];
+
+                let from_date=$('#from').val();
+                let to_date=$('#to').val();
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    payment_method.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'adminExportOrdersInExcel.php',
+                    type: 'POST',
+                    data: { sort_by: sort_by, payment_method: payment_method, delivery_status: delivery_status, from_date: from_date, to_date: to_date}, 
+                    success: function(data, status, xhr) {
+                        // console.log(data);
+                        console.log(delivery_status, payment_method, sort_by);
+                        let filename = "Orders_"+timestamp+".xls"; // Specify the desired filename here
+                        let contentType = xhr.getResponseHeader('Content-Type');
+
+                        // Create a Blob from the response data
+                        let blob = new Blob([data], { type: contentType });
+
+                        // Create a temporary anchor element and download the file
+                        let link = document.createElement('a');
+                        link.href = window.URL.createObjectURL(blob);
+                        link.download = filename;
+                        link.click();
+
+                    }
+                });
+            });
+
+            // ---------------------------------------------------------------------
+            // ------------------------ code end for order tab ---------------------
+            // ---------------------------------------------------------------------
+
+            // ---------------------------------------------------------------------
+            // -------------------- code start for product tab ---------------------
+            // ---------------------------------------------------------------------
+
             // code for view product tab 
             $(document).on('click', '#view-product-tab', function(e){
                 e.preventDefault();
@@ -1025,6 +1259,19 @@
 // ------------------------------------------------------------------------------
 // ----------------------- function coding area --------------------------------- 
 // ------------------------------------------------------------------------------
+            // function for loading the Orders 
+            function loadOrders()
+            {
+                $.ajax({
+                    url: 'api/loadOrdersApi.php',
+                    type: 'POST',
+                    data: {},
+                    success: function(data){
+                        $('.fluid-container').html(data);
+                    }
+                });
+            }
+
             // function for loading the Product 
             function loadProducts()
             {
