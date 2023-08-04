@@ -3,74 +3,14 @@
 include("_session_start.php");
 include("_dbconnect.php");
 
-$payment_method=[];
-$delivery_status=[];
-$sort_by=$_POST['sort_by'];
-
-if(isset($_POST['from_date']) && isset($_POST['to_date']))
-{
-    $from_date=$_POST['from_date'];
-    $to_date=$_POST['to_date'];
-}
+$search_data=$_POST['search_text'];
 
 $output = '';
 
-if(isset($_POST['payment_method']))
+if(!empty($search_data))
 {
-    $payment_method = $_POST['payment_method'];
-}
+    $sql = "SELECT * FROM orders WHERE order_id like '%{$search_data}%' or transaction_id like '%{$search_data}%'";
 
-if(isset($_POST['delivery_status']))
-{
-    $delivery_status = $_POST['delivery_status'];
-}
-
-
-if(!empty($payment_method) || !empty($delivery_status) || !empty($sort_by))
-{
-    $sql = "SELECT * FROM orders WHERE 1=1 ";
-
-    if(isset($_POST['from_date']) && isset($_POST['to_date']) && !empty($from_date) && !empty($to_date))
-    {
-        $sql .= " and  (date(order_date) BETWEEN '{$from_date}' AND '{$to_date}' or DATE(order_date) BETWEEN '{$to_date}' AND '{$from_date}') ";
-    }
-
-    if(!empty($payment_method))
-    {
-        $sql .= " and payment_method IN ('" . implode("','", $payment_method) . "') ";
-    }
-    if(!empty($delivery_status))
-    {
-        $sql .= " and delivery_status IN ('" . implode("','", $delivery_status) . "') ";
-    }
-
-
-    if($sort_by=='default')
-    {
-        $sql .= " order by order_date desc";
-    }
-    else if($sort_by=='newest first')
-    {
-        $sql .= " order by order_date desc";
-    }
-    else if($sort_by=='oldest first')
-    {
-        $sql .= " order by order_date asc";
-    }
-    else if($sort_by=='low to high')
-    {
-        $sql .= " order by total_price asc";
-    }
-    else if($sort_by=='high to low')
-    {
-        $sql .= " order by total_price desc";
-    }
-    else
-    {
-        $sql .= " order by order_date desc";
-    }
-    
-        // $sql="select * from orders order by order_date desc";
         $result=mysqli_query($conn, $sql);
 
         $output .=' <thead class="thead-primary">
@@ -177,8 +117,7 @@ if(!empty($payment_method) || !empty($delivery_status) || !empty($sort_by))
                 </tr>';
             }
         }
-
-} 
+}
 else
 {
     $sql="select * from orders order by order_date desc";

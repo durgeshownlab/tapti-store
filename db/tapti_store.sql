@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2023 at 02:31 PM
+-- Generation Time: Aug 04, 2023 at 02:25 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -107,23 +107,35 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `image`, `is_deleted`, `timestamp`) VALUES
-(1, 'Top Offers', 'img/category/top_offers.webp', 0, '2023-06-13 20:12:41'),
-(2, 'Mobiles & Tablets', 'img/category/smart_phone.webp', 0, '2023-06-13 20:12:41'),
-(3, 'Electronics', 'img/category/laptop.webp', 0, '2023-06-13 20:13:37'),
-(4, 'TV & Appliances', 'img/category/tv.webp', 0, '2023-06-13 20:13:37'),
-(5, 'Fashions', 'img/category/fashions.webp', 0, '2023-06-13 20:14:45'),
-(6, 'Beauty', 'img/category/beauty.webp', 0, '2023-06-13 20:14:45'),
-(7, 'Home & Kitchen', 'img/category/home_and_kitchen.webp', 0, '2023-06-13 20:16:20'),
-(8, 'Furniture', 'img/category/furniture.webp', 0, '2023-06-13 20:16:20'),
-(9, 'Flights', 'img/category/flights.webp', 0, '2023-06-13 20:16:55'),
-(10, 'Grocery', 'img/category/grocery.webp', 0, '2023-06-13 20:16:55'),
-(33, 'fgns', 'img/category/64a7c0195d0e08.56834546.jpg', 1, '2023-07-07 07:34:49'),
-(34, 'test', 'img/category/64a7d17717dd37.72923197.jpg', 1, '2023-07-07 08:48:55'),
-(35, 'ddddf', 'img/category/64a7d7e27008c5.51293678.jpg', 1, '2023-07-07 09:16:18'),
-(36, 'asdf', 'img/category/64a7daed9da835.44118267.jpg', 1, '2023-07-07 09:29:17'),
-(37, 'test', 'img/category/64a7de49029868.97266519.jpg', 0, '2023-07-07 09:43:37'),
-(38, 'asdf', 'img/category/64a7e034c2d920.20759942.jpg', 1, '2023-07-07 09:51:48'),
-(39, 'veg', 'img/category/64a7e255d47813.02749283.jpg', 1, '2023-07-07 10:00:53');
+(1, 'Top Offers', 'top_offers.webp', 1, '2023-06-13 20:12:41'),
+(2, 'Mobiles & Tablets', 'smart_phone.webp', 1, '2023-06-13 20:12:41'),
+(3, 'Electronics', 'laptop.webp', 0, '2023-06-13 20:13:37'),
+(4, 'TV & Appliances', 'tv.webp', 0, '2023-06-13 20:13:37'),
+(5, 'Fashions', 'fashions.webp', 0, '2023-06-13 20:14:45'),
+(6, 'Beauty', 'beauty.webp', 0, '2023-06-13 20:14:45'),
+(7, 'Home & Kitchen', 'home_and_kitchen.webp', 1, '2023-06-13 20:16:20'),
+(8, 'Furniture', 'furniture.webp', 0, '2023-06-13 20:16:20'),
+(9, 'Flights', 'flights.webp', 0, '2023-06-13 20:16:55'),
+(10, 'Grocery', 'grocery.webp', 0, '2023-06-13 20:16:55'),
+(33, 'fgns', '64a7c0195d0e08.56834546.jpg', 1, '2023-07-07 07:34:49'),
+(34, 'test', '64a7d17717dd37.72923197.jpg', 1, '2023-07-07 08:48:55'),
+(35, 'ddddf', '64a7d7e27008c5.51293678.jpg', 1, '2023-07-07 09:16:18'),
+(36, 'asdf', '64a7daed9da835.44118267.jpg', 1, '2023-07-07 09:29:17'),
+(37, 'test', '64a7de49029868.97266519.jpg', 1, '2023-07-07 09:43:37'),
+(38, 'asdf', '64a7e034c2d920.20759942.jpg', 1, '2023-07-07 09:51:48'),
+(39, 'veg', '64a7e255d47813.02749283.jpg', 1, '2023-07-07 10:00:53'),
+(40, 'test', '64c9f1b6818510.66353501.jpg', 1, '2023-08-02 06:03:34'),
+(41, 'test', '64c9f21cb63974.47797546.jpg', 1, '2023-08-02 06:05:16'),
+(42, 'test', '64c9f29fac2623.79899406.jpg', 1, '2023-08-02 06:07:27'),
+(43, 'test', '64c9f2ca67afe3.58092732.jpg', 1, '2023-08-02 06:08:10'),
+(44, 'test24', '64c9f59a304139.34847488.jpg', 1, '2023-08-02 06:20:10'),
+(45, 'teasdasd', '64c9f68842f225.62289138.jpg', 1, '2023-08-02 06:24:08'),
+(46, 'sdff', '64c9f6e8e79b70.10916657.jpg', 1, '2023-08-02 06:25:44'),
+(47, 'asdf', '64c9f7bd2adf62.12358257.jpg', 1, '2023-08-02 06:29:17'),
+(48, 'demo', '64c9fa8c8b9a23.01610567.jpg', 0, '2023-08-02 06:41:16'),
+(49, 'test', '64c9fda216c290.26303472.jpg', 1, '2023-08-02 06:54:26'),
+(50, 'test3354', '64ca1b00811a33.58144590.jpg', 1, '2023-08-02 07:56:03'),
+(51, 'test', '64ca5364e88ac1.51188159.jpg', 1, '2023-08-02 13:00:20');
 
 -- --------------------------------------------------------
 
@@ -157,14 +169,14 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `order_id`, `user_id`, `product_id`, `address_id`, `transaction_id`, `quantity`, `price_single_unit`, `total_price`, `payment_method`, `payment_status`, `delivery_status`, `order_status`, `order_event`, `order_date`, `is_deleted`, `is_canceled`, `timestamp`) VALUES
-(1, '1689327243ee63ec41', 9, 105, 20, NULL, 1, 10999, 10999, 'pod', 'pending', 'order confirmed', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"},{\"event_name\":\"order canceled\",\"Date\":\"14-07-2023\",\"Time\":\"15:07:50\"}]', '2023-07-14 15:04:03', 0, 1, '2023-07-14 09:34:03'),
-(2, '16893272432a3ac261', 9, 103, 20, NULL, 1, 290, 290, 'pod', 'pending', 'order confirmed', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"15:07:56\"}]', '2023-07-14 15:04:03', 0, 0, '2023-07-14 09:34:03'),
-(3, '1689327243511811f1', 9, 92, 20, NULL, 1, 15999, 15999, 'pod', 'pending', 'order confirmed', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"15:10:48\"}]', '2023-07-14 15:04:03', 0, 0, '2023-07-14 09:34:03'),
-(4, '1689327243b346f573', 9, 101, 20, NULL, 1, 10000, 10000, 'pod', 'pending', 'order confirmed', 'pending', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"}]', '2023-07-14 15:04:03', 0, 0, '2023-07-14 09:34:03'),
-(5, '168932728077f459e2', 9, 105, 20, 'pay_MDdLAMgiRLNsYw', 1, 10999, 10999, 'online', 'success', 'delivered', 'confirm', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"15:06:39\"},{\"event_name\":\"shipped\",\"Date\":\"14-07-2023\",\"Time\":\"15:06:49\"},{\"event_name\":\"out for delivery\",\"Date\":\"14-07-2023\",\"Time\":\"15:06:58\"},{\"event_name\":\"delivered\",\"Date\":\"14-07-2023\",\"Time\":\"15:07:38\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40'),
-(6, '1689327280e34c480a', 9, 103, 20, 'pay_MDdLAMgiRLNsYw', 1, 290, 290, 'online', 'success', 'order confirmed', 'pending', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40'),
-(7, '1689327280c7e4cc55', 9, 92, 20, 'pay_MDdLAMgiRLNsYw', 1, 15999, 15999, 'online', 'success', 'order confirmed', 'pending', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40'),
-(8, '1689327280b6dd889c', 9, 101, 20, 'pay_MDdLAMgiRLNsYw', 1, 10000, 10000, 'online', 'success', 'order confirmed', 'pending', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40');
+(1, '1689327243ee63ec41', 9, 105, 20, NULL, 1, 10999, 10999, 'pod', 'pending', 'canceled', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"},{\"event_name\":\"order canceled\",\"Date\":\"14-07-2023\",\"Time\":\"15:07:50\"}]', '2023-07-14 15:04:03', 0, 1, '2023-07-14 09:34:03'),
+(2, '16893272432a3ac261', 9, 103, 20, NULL, 1, 290, 290, 'pod', 'success', 'delivered', 'confirmed', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"15:07:56\"},{\"event_name\":\"shipped\",\"Date\":\"04-08-2023\",\"Time\":\"11:39:09\"},{\"event_name\":\"out for delivery\",\"Date\":\"04-08-2023\",\"Time\":\"11:39:54\"},{\"event_name\":\"delivered\",\"Date\":\"04-08-2023\",\"Time\":\"11:57:19\"}]', '2023-07-14 15:04:03', 0, 0, '2023-07-14 09:34:03'),
+(3, '1689327243511811f1', 9, 92, 20, NULL, 1, 15999, 15999, 'pod', 'success', 'delivered', 'confirmed', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"15:10:48\"},{\"event_name\":\"shipped\",\"Date\":\"04-08-2023\",\"Time\":\"11:42:08\"},{\"event_name\":\"out for delivery\",\"Date\":\"04-08-2023\",\"Time\":\"11:42:13\"},{\"event_name\":\"delivered\",\"Date\":\"04-08-2023\",\"Time\":\"11:43:28\"}]', '2023-07-14 15:04:03', 0, 0, '2023-07-14 09:34:03'),
+(4, '1689327243b346f573', 9, 101, 20, NULL, 1, 10000, 10000, 'pod', 'success', 'delivered', 'delivered', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:03\"},{\"event_name\":\"order confirmed\",\"Date\":\"04-08-2023\",\"Time\":\"14:51:46\"},{\"event_name\":\"shipped\",\"Date\":\"04-08-2023\",\"Time\":\"14:56:02\"},{\"event_name\":\"out for delivery\",\"Date\":\"04-08-2023\",\"Time\":\"14:56:05\"},{\"event_name\":\"delivered\",\"Date\":\"04-08-2023\",\"Time\":\"17:23:08\"}]', '2023-07-14 15:04:03', 0, 0, '2023-07-14 09:34:03'),
+(5, '168932728077f459e2', 9, 105, 20, 'pay_MDdLAMgiRLNsYw', 1, 10999, 10999, 'online', 'success', 'delivered', 'delivered', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"},{\"event_name\":\"order confirmed\",\"Date\":\"14-07-2023\",\"Time\":\"15:06:39\"},{\"event_name\":\"shipped\",\"Date\":\"14-07-2023\",\"Time\":\"15:06:49\"},{\"event_name\":\"out for delivery\",\"Date\":\"14-07-2023\",\"Time\":\"15:06:58\"},{\"event_name\":\"delivered\",\"Date\":\"14-07-2023\",\"Time\":\"15:07:38\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40'),
+(6, '1689327280e34c480a', 9, 103, 20, 'pay_MDdLAMgiRLNsYw', 1, 290, 290, 'online', 'success', 'canceled', 'canceled', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"},{\"event_name\":\"order canceled\",\"Date\":\"04-08-2023\",\"Time\":\"14:47:34\"}]', '2023-07-14 15:04:40', 0, 1, '2023-07-14 09:34:40'),
+(7, '1689327280c7e4cc55', 9, 92, 20, 'pay_MDdLAMgiRLNsYw', 1, 15999, 15999, 'online', 'success', 'shipped', 'confirmed', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"},{\"event_name\":\"order confirmed\",\"Date\":\"04-08-2023\",\"Time\":\"14:47:54\"},{\"event_name\":\"shipped\",\"Date\":\"04-08-2023\",\"Time\":\"14:50:54\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40'),
+(8, '1689327280b6dd889c', 9, 101, 20, 'pay_MDdLAMgiRLNsYw', 1, 10000, 10000, 'online', 'success', 'delivered', 'delivered', '[{\"event_name\":\"order placed\",\"Date\":\"14-07-2023\",\"Time\":\"15:04:40\"},{\"event_name\":\"order confirmed\",\"Date\":\"04-08-2023\",\"Time\":\"14:50:17\"},{\"event_name\":\"shipped\",\"Date\":\"04-08-2023\",\"Time\":\"14:50:34\"},{\"event_name\":\"out for delivery\",\"Date\":\"04-08-2023\",\"Time\":\"14:51:01\"},{\"event_name\":\"delivered\",\"Date\":\"04-08-2023\",\"Time\":\"14:55:03\"}]', '2023-07-14 15:04:40', 0, 0, '2023-07-14 09:34:40');
 
 -- --------------------------------------------------------
 
@@ -188,26 +200,30 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_image`, `product_price`, `product_desc`, `sub_category_id`, `is_deleted`, `timestamp`) VALUES
-(92, 'OPPO A17 (Lake Blue, 64 GB)  (4 GB RAM)', 'ipad.webp', 15999, '8 GB', 1, 0, '2023-06-21 19:34:25'),
+(92, 'Nokia (1208)s', '64c8ecbf4fb206.22419811.jpg', 15003, 'Nokia\'s number one keypad phonews', 32, 0, '2023-06-21 19:34:25'),
 (101, 'realme C33 2023', 'ipad.webp', 10000, '4 GB RAM and 64 GB ROM', 1, 0, '2023-06-21 23:43:41'),
-(103, 'realme C33 2023', 'ipad.webp', 290, 'sdf', 1, 0, '2023-06-21 23:49:21'),
+(103, 'realme C33 2023', 'ipad.webp', 290, 'sdf', 1, 1, '2023-06-21 23:49:21'),
 (105, 'sadf', 'ipad.webp', 10999, 'sadf', 1, 0, '2023-06-21 23:56:06'),
-(112, 'shirt', 'ipad.webp', 277, 'half shirt', 32, 0, '2023-06-22 23:17:38'),
-(114, 'fsdfs', 'ipad.webp', 0, 'asfsaf', 32, 0, '2023-07-06 11:15:52'),
+(112, 'shirt', 'ipad.webp', 277, 'half shirt', 32, 1, '2023-06-22 23:17:38'),
+(114, 'fsdfs', 'ipad.webp', 0, 'asfsaf', 32, 1, '2023-07-06 11:15:52'),
 (115, 'asdgsg', 'ipad.webp', 0, 'zxcbb', 34, 0, '2023-07-06 11:29:21'),
 (117, 'sdhd', 'ipad.webp', 5000, 'sdfgh', 34, 0, '2023-07-06 12:42:52'),
 (118, 'asdf', 'ipad.webp', 0, 'sf', 36, 0, '2023-07-07 08:49:57'),
 (119, 'tset ', 'ipad.webp', 0, 'sadfa', 36, 0, '2023-07-07 08:50:12'),
-(120, 'asdgsg', 'ipad.webp', 0, 'sdfsafgs', 37, 0, '2023-07-07 09:02:39'),
+(120, 'asdgsg', 'ipad.webp', 1, 'sdfsafgs', 32, 0, '2023-07-07 09:02:39'),
 (121, 'sdfs', 'ipad.webp', 0, 'asdfsa', 38, 0, '2023-07-07 09:16:56'),
 (122, 'asdf', 'ipad.webp', 0, 'asdf', 39, 0, '2023-07-07 09:29:38'),
-(123, 'asdfsa', 'ipad.webp', 23, 'sdfsaf', 40, 0, '2023-07-07 09:44:11'),
+(123, 'asdfsa', 'ipad.webp', 23, 'sdfsaf', 40, 1, '2023-07-07 09:44:11'),
 (124, 'asdf', 'ipad.webp', 425, 'safds', 42, 1, '2023-07-07 09:52:07'),
 (125, 'asdsa', 'ipad.webp', 0, 'asda', 43, 1, '2023-07-07 09:55:24'),
 (126, 'MANGO', 'ipad.webp', 1200, 'LELELELE', 44, 1, '2023-07-07 10:01:33'),
-(134, 'test product', '64c79d345b4ea7.97303519.jpg', 8999, 'test description', 1, 0, '2023-07-31 11:38:28'),
-(135, 'xcvzxv', '64c7a482bbba06.25496893.png', 234, 'fvsadf', 9, 0, '2023-07-31 12:09:38'),
-(136, 'asdf', '64c7a64ef16e96.03065500.jpg', 34234, 'wer', 9, 0, '2023-07-31 12:17:18');
+(139, 'test poduct', '64c8b5a3c18344.60683912.jpg', 7999, 'test description', 32, 0, '2023-08-01 07:34:59'),
+(140, 'sent fragrences', '64c8f77e5b08d3.29327729.jpg', 99990000, 'test descriptionggs', 1, 1, '2023-08-01 11:42:10'),
+(141, 'sdf', '64c9ea5a63ac23.66776956.jpg', 34, 'FGHSD', 44, 1, '2023-08-02 05:32:10'),
+(142, 'demo', '64c9fada547087.73500165.jpg', 333, 'wfsd', 44, 1, '2023-08-02 06:42:34'),
+(143, 'veg', '64ca3c6b18d691.17376187.jpeg', 2342, 'weqw', 44, 1, '2023-08-02 11:22:19'),
+(144, 'sdfa', '64ca46dc745027.93067130.jpg', 235, 'sdf', 46, 1, '2023-08-02 12:06:52'),
+(145, 'asda', '64ca53813d87f2.83791633.jpg', 4234, 'ASD', 48, 1, '2023-08-02 13:00:49');
 
 -- --------------------------------------------------------
 
@@ -228,18 +244,25 @@ CREATE TABLE `product_images` (
 --
 
 INSERT INTO `product_images` (`image_id`, `product_id`, `image_path`, `is_deleted`, `time_stamp`) VALUES
-(4, 134, '64c79d345c68c6.82013947.jpg', 0, '2023-07-31 11:38:28'),
-(5, 134, '64c79d345cee31.24180297.jpg', 0, '2023-07-31 11:38:28'),
-(6, 134, '64c79d345d5770.96392334.jpg', 0, '2023-07-31 11:38:28'),
-(7, 135, '64c7a482bedf74.82706221.jpg', 0, '2023-07-31 12:09:38'),
-(8, 135, '64c7a482bf8348.93701536.jpg', 0, '2023-07-31 12:09:38'),
-(9, 135, '64c7a482c057a9.77730091.jpg', 0, '2023-07-31 12:09:38'),
-(10, 135, '64c7a482c0e1a6.57332360.jpg', 0, '2023-07-31 12:09:38'),
-(11, 135, '64c7a482c13997.95841255.jpg', 0, '2023-07-31 12:09:38'),
-(12, 136, '64c7a64ef3ff19.43594950.jpg', 0, '2023-07-31 12:17:19'),
-(13, 136, '64c7a64f007157.17618720.jpg', 0, '2023-07-31 12:17:19'),
-(14, 136, '64c7a64f011eb1.55555924.jpg', 0, '2023-07-31 12:17:19'),
-(15, 136, '64c7a64f01a5e4.18334156.jpg', 0, '2023-07-31 12:17:19');
+(22, 139, '64c8b5a3c37120.58308935.jpg', 0, '2023-08-01 07:34:59'),
+(23, 139, '64c8b5a3c4f681.66183635.jpg', 0, '2023-08-01 07:34:59'),
+(24, 139, '64c8b5a3c59b13.59783582.jpg', 0, '2023-08-01 07:34:59'),
+(25, 139, '64c8b5a3c62011.71877668.jpg', 0, '2023-08-01 07:34:59'),
+(26, 139, '64c8b5a3c69875.22973962.jpg', 0, '2023-08-01 07:34:59'),
+(34, 92, '64c8ecbf517674.05740128.jpg', 0, '2023-08-01 11:30:07'),
+(35, 92, '64c8ecbf51eb67.41371421.jpg', 0, '2023-08-01 11:30:07'),
+(43, 140, '64c8f77e5d97f0.70628108.jpg', 0, '2023-08-01 12:15:58'),
+(44, 140, '64c8f7b83e1ca8.07852535.jpeg', 0, '2023-08-01 12:16:56'),
+(45, 140, '64c8f7b83e9538.44055678.jpg', 0, '2023-08-01 12:16:56'),
+(46, 141, '64c9ea5a64f3d8.09504165.jpg', 0, '2023-08-02 05:32:10'),
+(47, 141, '64c9ea5a658282.34427387.jpg', 0, '2023-08-02 05:32:10'),
+(48, 141, '64c9ea5a662478.00048232.jpg', 0, '2023-08-02 05:32:10'),
+(49, 142, '64c9fada55a246.91637526.jpg', 0, '2023-08-02 06:42:34'),
+(50, 143, '64ca3c6b1ae268.00159573.jpg', 0, '2023-08-02 11:22:19'),
+(51, 143, '64ca3c6b1bc949.02727807.jpg', 0, '2023-08-02 11:22:19'),
+(52, 143, '64ca3c6b1c63b2.82164265.jpg', 0, '2023-08-02 11:22:19'),
+(53, 144, '64ca46dc751927.33986863.jpg', 0, '2023-08-02 12:06:52'),
+(54, 145, '64ca53813e3da3.41830335.jpg', 0, '2023-08-02 13:00:49');
 
 -- --------------------------------------------------------
 
@@ -291,8 +314,8 @@ CREATE TABLE `specifications` (
 --
 
 INSERT INTO `specifications` (`specification_id`, `product_id`, `name`, `value`, `is_deleted`, `timestamp`) VALUES
-(25, 92, 'ram', '8 GB', 0, '2023-06-21 19:35:42'),
-(26, 92, 'rom', '64 GB', 0, '2023-06-21 19:36:14'),
+(25, 92, 'ramsd', ' 64 MBdsd', 0, '2023-06-21 19:35:42'),
+(26, 92, 'romsd', '500 MBsd', 0, '2023-06-21 19:36:14'),
 (35, 105, 'ss', 'dsg', 0, '2023-06-21 23:56:06'),
 (36, 105, 'sdfg', 'dsfg', 0, '2023-06-21 23:56:06'),
 (37, 105, 'asf', 'sf', 0, '2023-06-21 23:56:06'),
@@ -303,13 +326,13 @@ INSERT INTO `specifications` (`specification_id`, `product_id`, `name`, `value`,
 (51, 118, 'asdf', 'asdf', 0, '2023-07-07 08:49:57'),
 (52, 123, 'asdf', 'asdf', 0, '2023-07-07 09:44:11'),
 (53, 126, 'AA', 'AA', 0, '2023-07-07 10:01:33'),
-(65, 134, 'testy', 'test value', 0, '2023-07-31 11:38:28'),
-(66, 134, 'test 2', 'test value2', 0, '2023-07-31 11:38:28'),
-(67, 135, 'AD', 'ada', 0, '2023-07-31 12:09:38'),
-(68, 135, 'asd', 'ada', 0, '2023-07-31 12:09:38'),
-(69, 136, 'AS', 'asd', 0, '2023-07-31 12:17:18'),
-(70, 136, 'ASD', 'ad', 0, '2023-07-31 12:17:18'),
-(71, 136, 'A', 'asd', 0, '2023-07-31 12:17:18');
+(76, 139, 'color', 'black', 0, '2023-08-01 07:34:59'),
+(77, 139, 'size', '60cm', 0, '2023-08-01 07:34:59'),
+(78, 139, 'texture', 'solid', 0, '2023-08-01 07:34:59'),
+(79, 140, 'typefgas', 'deoasdf', 0, '2023-08-01 11:42:10'),
+(80, 141, 'SDF', 'SDFG', 0, '2023-08-02 05:32:10'),
+(81, 142, 'asd', 'sdf', 0, '2023-08-02 06:42:34'),
+(82, 143, 'add', 'ASDA', 0, '2023-08-02 11:22:19');
 
 -- --------------------------------------------------------
 
@@ -330,23 +353,27 @@ CREATE TABLE `sub_category` (
 --
 
 INSERT INTO `sub_category` (`sub_category_id`, `name`, `category_id`, `is_deleted`, `timestamp`) VALUES
-(1, 'smartphone', 2, 0, '2023-06-21 19:18:33'),
-(9, 'tablets', 2, 0, '2023-06-21 23:29:18'),
+(1, 'smartphone', 2, 1, '2023-06-21 19:18:33'),
+(9, 'tablets', 2, 1, '2023-06-21 23:29:18'),
 (25, 'hgjk', 6, 0, '2023-06-22 22:14:55'),
 (26, 'dfhdfhd', 6, 0, '2023-06-22 22:14:58'),
-(30, 'key-pad', 2, 0, '2023-06-22 23:15:17'),
+(30, 'key-pad', 2, 1, '2023-06-22 23:15:17'),
 (32, 'asdf', 5, 0, '2023-06-22 23:16:57'),
 (34, 'sdfag', 1, 1, '2023-07-06 11:28:59'),
-(35, 'asdf', 33, 0, '2023-07-07 07:35:01'),
+(35, 'asdf', 33, 1, '2023-07-07 07:35:01'),
 (36, 'test sub cat', 34, 1, '2023-07-07 08:49:34'),
-(37, 'test sub cat', 34, 0, '2023-07-07 09:02:20'),
-(38, 'asfdf', 35, 0, '2023-07-07 09:16:38'),
+(37, 'test sub cat', 34, 1, '2023-07-07 09:02:20'),
+(38, 'asfdf', 35, 1, '2023-07-07 09:16:38'),
 (39, 'asdf', 36, 1, '2023-07-07 09:29:26'),
-(40, 'test sub cat', 37, 0, '2023-07-07 09:43:48'),
+(40, 'test sub cat', 37, 1, '2023-07-07 09:43:48'),
 (41, 'test sub cat2', 37, 1, '2023-07-07 09:43:54'),
 (42, 'asdf', 38, 1, '2023-07-07 09:51:56'),
 (43, 'sads', 38, 1, '2023-07-07 09:55:10'),
-(44, 'SUB-VEG', 39, 1, '2023-07-07 10:01:08');
+(44, 'SUB-VEG', 48, 1, '2023-07-07 10:01:08'),
+(45, 'asdf', 3, 1, '2023-08-02 12:06:12'),
+(46, 'gggg', 5, 1, '2023-08-02 12:06:26'),
+(47, 'demo', 3, 1, '2023-08-02 12:48:23'),
+(48, 'asda', 51, 1, '2023-08-02 13:00:28');
 
 -- --------------------------------------------------------
 
@@ -506,7 +533,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -518,13 +545,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `razorpay_record`
@@ -536,13 +563,13 @@ ALTER TABLE `razorpay_record`
 -- AUTO_INCREMENT for table `specifications`
 --
 ALTER TABLE `specifications`
-  MODIFY `specification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `specification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `sub_category`
 --
 ALTER TABLE `sub_category`
-  MODIFY `sub_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `sub_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `user_table`
