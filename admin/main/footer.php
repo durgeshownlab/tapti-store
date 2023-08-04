@@ -57,6 +57,161 @@
                 });
             });
 
+            //####################################################
+            // code for updating the delivery status 
+            //####################################################
+            $(document).on("click", "#update-delivery-status-btn", function(e){
+                e.preventDefault();
+                if(confirm('Do you realy want to update'))
+                {
+                    let delivery_status=$('#delivery-status').val();
+                    let order_id=$('[name="order-id"]').val();
+                    console.log(delivery_status+"........."+order_id);
+                    if(delivery_status=='')
+                    {  
+                        // alert("Sorry, can't revert the status");
+                        warningMsg(`Sorry, You Can't Revert Status`);
+                    }
+                    else
+                    {
+                        $.ajax({
+                            url: "api/updateDeliveryStatusApi.php",
+                            type: "POST",
+                            data: {order_id: order_id, delivery_status: delivery_status},
+                            success: function(data){
+                                if(data==1)
+                                {
+                                    loadOrders();
+                                    console.log('Delivery status changed to ', delivery_status);
+                                    successMsg(`Delivery Status Changed to ${delivery_status}`);
+                                    $.ajax({
+                                        url: 'api/viewOrderDetailsApi.php',
+                                        type: 'POST',
+                                        data: {order_id: order_id},
+                                        success: function(data){
+                                            $('.modal-dialog').html(data);
+                                        }
+                                    });
+                                }
+                                else if(data==0)
+                                {
+                                    errorMsg(`Sorry, Failed to Change the Status`);
+                                    console.log('failed to changed');
+                                }
+                                else
+                                {
+                                    console.log(data);
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+
+            //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            // code for confirming or canceling the order as admin
+            //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            // code for cancel order as admin 
+            $(document).on("click", "#cancel-order-admin", function(e){
+                if(confirm('Do you Really want cancel order'))
+                {
+                    let order_id=$(this).data('order-id');
+                    console.log(order_id);
+                    $.ajax({
+                        url: "api/cancelOrderApi.php",
+                        type: "POST",
+                        data: {order_id: order_id},
+                        success: function(data) {
+                            if(data==1)
+                            {
+                                loadOrders();
+                                console.log('order canceled');
+                                successMsg(`Order Canceled`);
+                                $.ajax({
+                                    url: 'api/viewOrderDetailsApi.php',
+                                    type: 'POST',
+                                    data: {order_id: order_id},
+                                    success: function(data){
+                                        $('.modal-dialog').html(data);
+                                    }
+                                });
+                            }
+                            else if(data==0)
+                            {
+                                console.log('order could not be canceled');
+                                errorMsg('Order Couldn\'t be Canceled');
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+            });
+
+            // code for confirming order as admin 
+            $(document).on("click", "#confirm-order-admin", function(e){
+                if(confirm('Do you Really want Confirm order'))
+                {
+                    let order_id=$(this).data('order-id');
+                    console.log(order_id);
+                    $.ajax({
+                        url: "api/confirmOrderApi.php",
+                        type: "POST",
+                        data: {order_id: order_id},
+                        success: function(data) {
+                            if(data==1)
+                            {
+                                loadOrders();
+                                console.log('order confirmed');
+                                successMsg(`Order Confirmed`);
+                                $.ajax({
+                                    url: 'api/viewOrderDetailsApi.php',
+                                    type: 'POST',
+                                    data: {order_id: order_id},
+                                    success: function(data){
+                                        $('.modal-dialog').html(data);
+                                    }
+                                });
+                            }
+                            else if(data==0)
+                            {
+                                console.log('order could not be confirmed');
+                                errorMsg('Order Couldn\'t be Confirmed');
+                            }
+                            else
+                            {
+                                console.log(data);
+                            }
+                        }
+                    });
+                }
+            });
+
+        //  ****************************************************
+        //      code  for download the invoice in pdf format
+        //  ****************************************************
+        $(document).on("click", ".get-invoice-btn", function(e){
+            let order_id=$(this).data('order-id');
+            console.log(order_id);
+            var form = $('<form>', {
+            method: 'POST',
+            action: 'api/downloadInvoiceApi.php',
+            target: '_blank' // Open the PDF in a new tab/window
+            });
+
+            // Add hidden input fields for each data item
+            form.append($('<input>', {
+            type: 'hidden',
+            name: 'order_id',
+            value: order_id
+            }));
+            // Append the form to the document and submit it
+            form.appendTo(document.body).submit();
+        });
+
         //***************************************************
         //      code for filter 
         //***************************************************
@@ -71,14 +226,6 @@
                 let from_date=$('#from').val();
                 let to_date=$('#to').val();
 
-                let order_status=0;
-
-                if($('#order-status-filter').is(':checked'))
-                {
-                    order_status = 1;
-                    console.log("Checkbox value:", order_status);
-                }
-
                 $('input[name="delivery-status[]"]:checked').each(function() {
                     delivery_status.push($(this).val());
                 });
@@ -90,10 +237,10 @@
                 $.ajax({
                     url: 'api/sortFilterOrdersApi.php',
                     type: 'POST',
-                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, order_status: order_status, from_date: from_date, to_date: to_date}, 
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, from_date: from_date, to_date: to_date}, 
                     success: function(data) {
                         // console.log(data);
-                        console.log(delivery_status, payment_method, order_status, sort_by, from_date, to_date);
+                        console.log(delivery_status, payment_method, sort_by, from_date, to_date);
                         $('.orders-table').html(data);
                     }
                 });
@@ -104,16 +251,8 @@
                 let sort_by=$('input[name="sort-by"]:checked').val();
                 let payment_method = [];
                 let delivery_status = [];
-                let order_status=0;
-
                 let from_date=$('#from').val();
                 let to_date=$('#to').val();
-
-                if($('#order-status-filter').is(':checked'))
-                {
-                    order_status = 1;
-                    console.log("Checkbox value:", order_status);
-                }
 
                 $('input[name="delivery-status[]"]:checked').each(function() {
                     delivery_status.push($(this).val());
@@ -126,10 +265,10 @@
                 $.ajax({
                     url: 'api/sortFilterOrdersApi.php',
                     type: 'POST',
-                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, order_status: order_status, from_date: from_date, to_date: to_date}, 
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, from_date: from_date, to_date: to_date}, 
                     success: function(data) {
                         // console.log(data);
-                        console.log(delivery_status, payment_method, sort_by, order_status, from_date, to_date);
+                        console.log(delivery_status, payment_method, sort_by, from_date, to_date);
                         $('.orders-table').html(data);
                     }
                 });
@@ -140,16 +279,9 @@
                 let sort_by=$('input[name="sort-by"]:checked').val();
                 let payment_method = [];
                 let delivery_status = [];
-                let order_status=0;
 
                 let from_date=$('#from').val();
                 let to_date=$('#to').val();
-
-                if($('#order-status-filter').is(':checked'))
-                {
-                    order_status = 1;
-                    console.log("Checkbox value:", order_status);
-                }
 
                 $('input[name="delivery-status[]"]:checked').each(function() {
                     delivery_status.push($(this).val());
@@ -162,10 +294,10 @@
                 $.ajax({
                     url: 'api/sortFilterOrdersApi.php',
                     type: 'POST',
-                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, order_status: order_status, from_date: from_date, to_date: to_date}, 
+                    data: { payment_method: payment_method, delivery_status: delivery_status, sort_by: sort_by, from_date: from_date, to_date: to_date}, 
                     success: function(data) {
                         // console.log(data);
-                        console.log(delivery_status, payment_method, sort_by, order_status, from_date, to_date);
+                        console.log(delivery_status, payment_method, sort_by, from_date, to_date);
                         $('.orders-table').html(data);
                     }
                 });
@@ -178,13 +310,39 @@
             $(document).on("change", "input[name=\"sort-by\"]", function(e){
                 let sort_by=$('input[name="sort-by"]:checked').val();
 
-                let order_status=0;
+                let payment_method = [];
+                let delivery_status = [];
 
-                if($('#order-status-filter').is(':checked'))
-                {
-                    order_status = 1;
-                    console.log("Checkbox value:", order_status);
-                }
+
+                let from_date=$('#from').val();
+                let to_date=$('#to').val();
+
+                $('input[name="delivery-status[]"]:checked').each(function() {
+                    delivery_status.push($(this).val());
+                });
+
+                $('input[name="payment-mode[]"]:checked').each(function() {
+                    payment_method.push($(this).val());
+                });
+
+                $.ajax({
+                    url: 'api/sortFilterOrdersApi.php',
+                    type: 'POST',
+                    data: { sort_by: sort_by, payment_method: payment_method, delivery_status: delivery_status, from_date: from_date, to_date: to_date}, 
+                    success: function(data) {
+                        // console.log(data);
+                        console.log(delivery_status, payment_method, sort_by, from_date, to_date);
+
+                        $('.orders-table').html(data);
+                    }
+                });
+            });
+
+            //  ********************************************************************
+            //      code for filterign the orders by date range in admin pannel
+            //  ********************************************************************
+            $(document).on("click", "#filter-by-date-range", function(e){
+                let sort_by=$('input[name="sort-by"]:checked').val();
 
                 let payment_method = [];
                 let delivery_status = [];
@@ -204,22 +362,45 @@
                 $.ajax({
                     url: 'api/sortFilterOrdersApi.php',
                     type: 'POST',
-                    data: { sort_by: sort_by, payment_method: payment_method, delivery_status: delivery_status, order_status: order_status, from_date: from_date, to_date: to_date}, 
+                    data: { sort_by: sort_by, payment_method: payment_method, delivery_status: delivery_status, from_date: from_date, to_date: to_date}, 
                     success: function(data) {
                         // console.log(data);
-                        console.log(delivery_status, payment_method, sort_by, order_status, from_date, to_date);
+                        console.log(delivery_status, payment_method, sort_by, from_date, to_date);
 
                         $('.orders-table').html(data);
                     }
                 });
+            });
+            
+            //  ****************************************************
+            //      code for when search in serch bar 
+            //  ****************************************************
+            $(document).on('keyup', '#search-bar', function(e){
+                e.preventDefault();
+                let search_for=$('#search-bar').attr('data-search-for');
+                let search_text=$('#search-bar').val();
+                if(search_for=='orders')
+                {
+                    console.log(search_for+' :'+search_text);
+                    $.ajax({
+                        url: 'api/searchOrderApi.php',
+                        type: 'POST',
+                        data: {search_text: search_text},
+                        success: function(data){
+                            $('.orders-table').html(data);
+                        }
+                    });
+                }
+                
             });
 
             //  ****************************************************
             //      code  for exporting orders in excel
             //  ****************************************************
             $(document).on("click", ".export-button", function(e){
-                let sort_by=$('input[name="sort-by"]:checked').val();
                 let timestamp = new Date().getTime();
+                
+                let sort_by=$('input[name="sort-by"]:checked').val();
 
                 let payment_method = [];
                 let delivery_status = [];
@@ -236,7 +417,7 @@
                 });
 
                 $.ajax({
-                    url: 'adminExportOrdersInExcel.php',
+                    url: 'api/exportOrdersInExcelApi.php',
                     type: 'POST',
                     data: { sort_by: sort_by, payment_method: payment_method, delivery_status: delivery_status, from_date: from_date, to_date: to_date}, 
                     success: function(data, status, xhr) {
@@ -257,6 +438,8 @@
                     }
                 });
             });
+
+            
 
             // ---------------------------------------------------------------------
             // ------------------------ code end for order tab ---------------------

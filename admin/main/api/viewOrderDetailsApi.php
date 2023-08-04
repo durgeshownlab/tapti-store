@@ -118,7 +118,7 @@ $output .='
                                 <div class="input-group">
                                     <select class="form-control" id="delivery-status">';
             
-                                if($row['delivery_status']=='order confirmed')
+                                if($row['delivery_status']=='confirmed')
                                 {
                                     $output .='
                                         <option value="">'.$row['delivery_status'].'</option>

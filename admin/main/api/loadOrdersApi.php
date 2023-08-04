@@ -26,7 +26,11 @@
                         <div class="delivery-status-filter">
                             <p class="bg-secondary">Delivery Status</p>
                             <div class="filter-item">
-                                <input type="checkbox" name="delivery-status[]" id="order-confirmed-filter" value="order confirmed">
+                                <input type="checkbox" name="delivery-status[]" id="order-placed-filter" value="placed">
+                                <label for="order-placed-filter">Order Placed</label>
+                            </div>
+                            <div class="filter-item">
+                                <input type="checkbox" name="delivery-status[]" id="order-confirmed-filter" value="confirmed">
                                 <label for="order-confirmed-filter">Order Confirmed</label>
                             </div>
                             <div class="filter-item">
@@ -41,15 +45,13 @@
                                 <input type="checkbox" name="delivery-status[]" id="delivered-filter" value="delivered">
                                 <label for="delivered-filter">Delivered</label>
                             </div>
-                        </div>
-
-                        <div class="order-status-filter">
-                            <p class="bg-secondary">Order Status</p>
                             <div class="filter-item">
-                                <input type="checkbox" name="order-status" id="order-status-filter" value="1">
-                                <label for="order-status-filter">Canceled</label>
+                                <input type="checkbox" name="delivery-status[]" id="canceled-filter" value="canceled">
+                                <label for="canceled-filter">Order Canceled</label>
                             </div>
                         </div>
+
+                        
                     </div>
                 </div>
             </div>
@@ -97,7 +99,7 @@
                 <input type="date" id="from" name="from">
                 <label for="to">to</label>
                 <input type="date" id="to" name="to">
-                <input type="button" value="Get" id="get-by-date-range">
+                <input type="button" value="Get" id="filter-by-date-range">
             </div>
         </div>';
 
@@ -117,6 +119,7 @@
                                     <th>Quantity</th>
                                     <th>Total Price</th>
                                     <th>Order Status</th>
+                                    <th>Delivery Status</th>
                                     <th>Order Date</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -164,9 +167,13 @@
 
                 <td>
                     <p class="badge';
-            if($row['order_status']=='confirm')
+            if($row['order_status']=='delivered')
             {
                 $output .=' badge-success';
+            }        
+            else if($row['order_status']=='confirmed')
+            {
+                $output .=' badge-primary';
             }        
             else if($row['order_status']=='pending')
             {
@@ -180,6 +187,32 @@
             $output .='">'.ucwords($row['order_status']).'</p>
                 </td>
 
+                <td>
+                    <p class="badge ';
+
+            if($row['delivery_status']=='delivered')
+            {
+                $output .=' badge-success';
+            }        
+            else if($row['delivery_status']=='confirmed')
+            {
+                $output .=' badge-primary';
+            }        
+            else if($row['delivery_status']=='placed')
+            {
+                $output .=' badge-warning';
+            }        
+            else if($row['delivery_status']=='canceled')
+            {
+                $output .=' badge-danger';
+            }    
+            else
+            {
+                 $output .=' badge-secondary';
+            }
+                    
+            $output .='">'.ucwords($row['delivery_status']).'</p>
+                </td>
                 <td>
                     <p>'.ucwords($row['order_date']).'</p>
                 </td>
