@@ -24,6 +24,10 @@
     <script>
         $(document).ready(function(){
             console.log('jquery runing...');
+            loadOrdersCount();
+            loadProductsCount();
+            loadCategoryCount();
+            loadSubCategoryCount();
             
 // ------------------------------------------------------------------------------
 // ----------------------- on click event coding area ---------------------------
@@ -1620,6 +1624,60 @@
                     tapToDismiss: !1
                 });
             }
+
+            
+            // function for loading the orders count
+            function loadOrdersCount()
+            {
+                $.ajax({
+                    url: 'api/loadOrdersCountApi.php',
+                    type: 'POST',
+                    data: {},
+                    success: function(data){
+                        $('.orders-count').html(data);
+                    }
+                });
+            }
+
+            // function for loading the products count
+            function loadProductsCount()
+            {
+                $.ajax({
+                    url: 'api/loadProductsCountApi.php',
+                    type: 'POST',
+                    data: {},
+                    success: function(data){
+                        $('.products-count').html(data);
+                    }
+                });
+            }
+
+            // function for loading the category count
+            function loadCategoryCount()
+            {
+                $.ajax({
+                    url: 'api/loadCategoryCountApi.php',
+                    type: 'POST',
+                    data: {},
+                    success: function(data){
+                        $('.category-count').html(data);
+                    }
+                });
+            }
+
+            // function for loading the sub-category count
+            function loadSubCategoryCount()
+            {
+                $.ajax({
+                    url: 'api/loadSubCategoryCountApi.php',
+                    type: 'POST',
+                    data: {},
+                    success: function(data){
+                        $('.sub-category-count').html(data);
+                    }
+                });
+            }
+
         });
 
     
