@@ -98,8 +98,8 @@
             <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4>NewsLetter <span class="pull-right"><i class="ion-email-unread f-s-30 text-success"></i></span></h4>
-                        <h6 class="m-t-20 f-s-14 newsletter-count"></h6>
+                        <h4>Products <span class="pull-right"><i class="fa fa-product-hunt f-s-30 text-success"></i></span></h4>
+                        <h6 class="m-t-20 f-s-14 products-count"></h6>
                     </div>
                 </div>
             </div>
@@ -107,46 +107,21 @@
             <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Service <span class="pull-right"><i class="mdi mdi-chart-bar f-s-30 text-danger"></i></span>
+                        <h4>Category <span class="pull-right"><i class="fa fa-folder f-s-30 text-dark"></i></span>
                         </h4>
-                        <h6 class="m-t-20 f-s-14 service-count"></h6>
+                        <h6 class="m-t-20 f-s-14 category-count"></h6>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xl-5">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Message</h4>
-                        
-                        <?php 
-                            // $sql="select * from contact_us order by time_stamp desc limit 3";
-                            // $result=mysqli_query($conn, $sql);
-
-                            // if(mysqli_num_rows($result)>0)
-                            // {
-                            //     while($row=mysqli_fetch_assoc($result))
-                            //     {
-                            //         echo '
-                            //             <div class="media border-bottom-1 p-t-15 p-b-15">
-                            //                 <div class="media-body">
-                            //                     <h5>'.ucwords($row['name']).'</h5>
-                            //                     <p class="m-b-0">
-                            //                         '.ucwords(substr($row['message'], 0, 50)).'
-                            //                     </p>
-                            //                 </div>
-                            //                 <span class="text-muted f-s-12">
-                            //                     '.date("F j, Y", strtotime($row['time_stamp'])).'
-                            //                 </span>
-                            //             </div>
-                            //         ';
-                            //     }
-                            // }
-                            
-                        ?>
-                        
+                        <h4>Sub Category <span class="pull-right"><i class="fa fa-folder-tree f-s-30 text-danger"></i></span>
+                        </h4>
+                        <h6 class="m-t-20 f-s-14 sub-category-count"></h6>
                     </div>
                 </div>
             </div>
