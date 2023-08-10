@@ -1,15 +1,15 @@
 <?php
 
-// include("../../_session_start.php");
-// include("../../_dbconnect.php");
+session_start();
 
-// if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'customer') {
-//     header("Location: ../../");
-// }
-
-// if (!isset($_SESSION['user_type'])) {
-//     header("Location: ../../");
-// }
+if (!isset($_SESSION['user_type'])) 
+{
+    header("Location: /tapti-store/");
+}
+else if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'customer') 
+{
+    header("Location: /tapti-store/");
+}
 
 ?>
 

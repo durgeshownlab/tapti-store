@@ -1,0 +1,146 @@
+[30-Mar-2023 02:18:27 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[30-Mar-2023 02:18:27 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include()
+#1 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#2 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[30-Mar-2023 02:18:48 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[30-Mar-2023 02:18:48 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/index.php(94): include()
+#1 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[30-Mar-2023 02:19:03 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[30-Mar-2023 02:19:06 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/index.php(94): include()
+#1 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[01-Apr-2023 01:23:27 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[01-Apr-2023 01:23:27 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include()
+#1 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#2 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[01-Apr-2023 01:23:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[01-Apr-2023 01:23:32 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include()
+#1 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#2 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[01-Apr-2023 01:23:32 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[01-Apr-2023 01:23:32 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include()
+#1 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#2 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[01-Apr-2023 01:23:35 America/Boise] PHP Warning:  mysqli_connect(): (08004/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[01-Apr-2023 01:23:35 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include()
+#1 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#2 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[01-Apr-2023 01:23:43 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[01-Apr-2023 01:23:43 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include()
+#1 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#2 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[01-Apr-2023 01:42:22 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[01-Apr-2023 01:42:22 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include()
+#1 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#2 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[24-May-2023 04:47:15 America/Boise] PHP Warning:  mysqli_connect(): (08004/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[24-May-2023 04:47:15 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include()
+#1 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#2 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[24-May-2023 04:47:16 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1040): Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[24-May-2023 04:47:16 America/Boise] PHP Fatal error:  Uncaught Error: Function name must be a string in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:5
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include()
+#1 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#2 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 5
+[26-Jun-2023 04:47:13 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:2
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/config/config.php(2): mysqli_connect('localhost', 'vuzjjwmy_gloryh...', Object(SensitiveParameterValue), 'vuzjjwmy_gloryh...')
+#1 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include('/home4/vuzjjwmy...')
+#2 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#3 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[26-Jun-2023 04:47:17 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:2
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/config/config.php(2): mysqli_connect('localhost', 'vuzjjwmy_gloryh...', Object(SensitiveParameterValue), 'vuzjjwmy_gloryh...')
+#1 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include('/home4/vuzjjwmy...')
+#2 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#3 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[26-Jun-2023 04:47:17 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:2
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/config/config.php(2): mysqli_connect('localhost', 'vuzjjwmy_gloryh...', Object(SensitiveParameterValue), 'vuzjjwmy_gloryh...')
+#1 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include('/home4/vuzjjwmy...')
+#2 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#3 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[26-Jun-2023 04:47:19 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:2
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/config/config.php(2): mysqli_connect('localhost', 'vuzjjwmy_gloryh...', Object(SensitiveParameterValue), 'vuzjjwmy_gloryh...')
+#1 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include('/home4/vuzjjwmy...')
+#2 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#3 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[26-Jun-2023 04:47:21 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:2
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/config/config.php(2): mysqli_connect('localhost', 'vuzjjwmy_gloryh...', Object(SensitiveParameterValue), 'vuzjjwmy_gloryh...')
+#1 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include('/home4/vuzjjwmy...')
+#2 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#3 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[26-Jun-2023 05:12:42 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Connection refused in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:2
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/config/config.php(2): mysqli_connect('localhost', 'vuzjjwmy_gloryh...', Object(SensitiveParameterValue), 'vuzjjwmy_gloryh...')
+#1 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include('/home4/vuzjjwmy...')
+#2 /home4/vuzjjwmy/public_html/gloryhouz/details.php(1): include('/home4/vuzjjwmy...')
+#3 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[02-Jul-2023 13:07:02 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:2
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/config/config.php(2): mysqli_connect('localhost', 'vuzjjwmy_gloryh...', Object(SensitiveParameterValue), 'vuzjjwmy_gloryh...')
+#1 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include('/home4/vuzjjwmy...')
+#2 /home4/vuzjjwmy/public_html/gloryhouz/index.php(2): include('/home4/vuzjjwmy...')
+#3 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[16-Jul-2023 01:31:57 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''10''' at line 1 in /home4/vuzjjwmy/public_html/gloryhouz/product.php:10
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/product.php(10): mysqli_query(Object(mysqli), 'SELECT * FROM `...')
+#1 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/product.php on line 10
+[17-Jul-2023 02:51:55 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''1''' at line 1 in /home4/vuzjjwmy/public_html/gloryhouz/product.php:10
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/product.php(10): mysqli_query(Object(mysqli), 'SELECT * FROM `...')
+#1 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/product.php on line 10
+[25-Jul-2023 02:01:30 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: Too many connections in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php:2
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/config/config.php(2): mysqli_connect('localhost', 'vuzjjwmy_gloryh...', Object(SensitiveParameterValue), 'vuzjjwmy_gloryh...')
+#1 /home4/vuzjjwmy/public_html/gloryhouz/header.php(1): include('/home4/vuzjjwmy...')
+#2 /home4/vuzjjwmy/public_html/gloryhouz/about.php(1): include('/home4/vuzjjwmy...')
+#3 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/config/config.php on line 2
+[30-Jul-2023 01:28:19 America/Boise] PHP Fatal error:  Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''10''' at line 1 in /home4/vuzjjwmy/public_html/gloryhouz/product.php:10
+Stack trace:
+#0 /home4/vuzjjwmy/public_html/gloryhouz/product.php(10): mysqli_query(Object(mysqli), 'SELECT * FROM `...')
+#1 {main}
+  thrown in /home4/vuzjjwmy/public_html/gloryhouz/product.php on line 10
