@@ -8,7 +8,7 @@ include("_session.php");
 $address_id= $_POST['address_id'];
 $product_id= $_POST['product_id'];
 
-echo $address_id.' '.$product_id.' product ';
+// echo $address_id.' '.$product_id.' product ';
 
 if($_POST['payment_mode']=='online')
 {
@@ -32,7 +32,7 @@ else if($_POST['payment_mode']=='pod')
 
     $payment_method='pod';
     $payment_status='pending';
-    $delivery_status='order confirmed';
+    $delivery_status='order placed';
 
      // code for order  event start from the order placed
 
@@ -54,11 +54,18 @@ else if($_POST['payment_mode']=='pod')
     $result=mysqli_query($con, $sql);
     if($result)
     {
-        echo 1;
+        $response=[
+            'status'    =>  1,
+            'order_id'      =>  $custom_order_id
+        ];
+        echo json_encode($response);
     }
     else
     {
-        echo 0;
+        $response=[
+            'status'    =>  0
+        ];
+        echo json_encode($response);
     }
 }
 

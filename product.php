@@ -44,26 +44,31 @@ while($data=mysqli_fetch_assoc($run1)) {
 
 
 $cat_id = $_GET['cat_id'];
-$sql1=("SELECT * FROM `products` where sub_category_id = '$cat_id'");
+
+$sql1="select products.product_id as product_id, products.product_name as product_name, products.product_price as product_price, products.product_image as product_image from products join sub_category on products.sub_category_id=sub_category.sub_category_id JOIN category on sub_category.category_id=category.id where category.id={$cat_id} and sub_category.is_deleted=0 and category.is_deleted=0 and products.is_deleted=0";
+
 $run1=mysqli_query($con,$sql1);
 
 while($data=mysqli_fetch_assoc($run1)) {
 
-          $product_name = $data['name'];
-          $product_img = $data['product_img'];
-
-           $id = $data['id'];
+		$product_name = $data['product_name'];
+		$product_img = $data['product_image'];
+        $id = $data['product_id'];
 
 ?>
 					<div class="col-6 col-md-4 col-xl-3">
 						<div class="grid_item">
 							<figure>
 								<a href="details.php?pid=<?=$id;?>">
-									<img class="img-fluid lazy" src="<?=$product_img;?>" alt="<?=$product_name;?>">
+									<img class="img-fluid lazy" src="images/products/<?=$product_img;?>" alt="<?=$product_name;?>">
 								</a>
 							</figure>
 							<a href="details.php?pid=<?=$id;?>">
 								<h3><?=$product_name;?></h3>
+								<div class="price_box">
+									<span class="new_price">&#8377;<?= number_format($data['product_price']); ?></span>
+									<!-- <span class="old_price">$60.00</span> -->
+								</div>
 							</a>
 						</div>
 						<!-- /grid_item -->
