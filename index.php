@@ -76,9 +76,25 @@
 
 	<div class="container margin_60_35">
 		<div class="main_title">
-			<h2>T-Shirts</h2>
+
+		<?php 
+
+			$sql="select * from category where is_deleted=0 order by rand() limit 1";
+			$result=mysqli_query($con, $sql);
+
+			if(mysqli_num_rows($result)>0)
+			{
+				$row=mysqli_fetch_assoc($result);
+				$cat1_id=$row['id'];
+				$cat1_name=$row['name'];
+			}
+
+
+		?>
+
+			<h2><?= $cat1_name ?></h2>
 			<span>Products</span>
-			<!--			<p>Cum doctus civibus efficiantur in imperdiet deterruisset</p> -->
+			<!-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p> -->
 		</div>
 		<div class="row small-gutters">
 
@@ -87,12 +103,11 @@
 
 			<?php
 
-			include("config/config.php");
-
-
-
 			//$cat_id = $_GET['cat_id'];
-			$sql1 = ("SELECT * FROM `products` WHERE sub_category_id IN (1,36,46,48) and is_deleted=0  LIMIT 9");
+			// $sql1 = ("SELECT * FROM `products` WHERE sub_category_id IN (1,36,46,48) and is_deleted=0  LIMIT 9");
+
+			$sql1="select products.product_id as product_id, products.product_name as product_name, products.product_price as product_price, products.product_image as product_image from products join sub_category on products.sub_category_id=sub_category.sub_category_id JOIN category on sub_category.category_id=category.id where category.id={$cat1_id} and sub_category.is_deleted=0 and category.is_deleted=0 and products.is_deleted=0";
+
 			$run1 = mysqli_query($con, $sql1);
 
 			while ($data = mysqli_fetch_assoc($run1)) {
@@ -179,7 +194,23 @@
 
 	<div class="container margin_60_35">
 		<div class="main_title">
-			<h2>Mens Homewear</h2>
+
+		<?php 
+
+			$sql="select * from category where  id!={$cat1_id} and is_deleted=0 order by rand() limit 1";
+			$result=mysqli_query($con, $sql);
+
+			if(mysqli_num_rows($result)>0)
+			{
+				$row=mysqli_fetch_assoc($result);
+				$cat2_id=$row['id'];
+				$cat2_name=$row['name'];
+			}
+
+
+		?>
+
+			<h2><?= $cat2_name ?></h2>
 			<span>Products</span>
 			<!--			<p>Cum doctus civibus efficiantur in imperdiet deterruisset</p> -->
 		</div>
@@ -187,30 +218,33 @@
 
 			<?php
 
-			include("config/config.php");
-
 
 
 			//$cat_id = $_GET['cat_id'];
-			$sql1 = ("SELECT * FROM `products` WHERE  sub_category_id IN (2,4,5,10,11)  LIMIT 9");
+			// $sql1 = ("SELECT * FROM `products` WHERE  sub_category_id IN (2,4,5,10,11)  LIMIT 9");
+			$sql1 = "select products.product_id as product_id, products.product_name as product_name, products.product_price as product_price, products.product_image as product_image from products join sub_category on products.sub_category_id=sub_category.sub_category_id JOIN category on sub_category.category_id=category.id where category.id={$cat2_id} and sub_category.is_deleted=0 and category.is_deleted=0 and products.is_deleted=0";
 			$run1 = mysqli_query($con, $sql1);
 
 			while ($data = mysqli_fetch_assoc($run1)) {
 
-				$product_name = $data['name'];
-				$product_img = $data['product_img'];
+				$product_name = $data['product_name'];
+				$product_img = $data['product_image'];
 
-				$id = $data['id'];
+				$id = $data['product_id'];
 			?>
 				<div class="item">
 					<div class="grid_item">
 						<figure>
 							<a href="details.php?pid=<?= $id; ?>">
-								<img class="owl-lazy" src="<?= $product_img; ?>" alt="<?= $product_name; ?>">
+								<img class="owl-lazy" src="images/products/<?= $product_img; ?>" alt="<?= $product_name; ?>">
 							</a>
 						</figure>
 						<a href="details.php?pid=<?= $id; ?>">
 							<h3><?= $product_name; ?></h3>
+							<div class="price_box">
+								<span class="new_price">&#8377;<?= number_format($data['product_price']); ?></span>
+								<!-- <span class="old_price">$60.00</span> -->
+							</div>
 						</a>
 					</div>
 					<!-- /grid_item -->

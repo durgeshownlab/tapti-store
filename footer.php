@@ -675,7 +675,7 @@
 		$(document).on("click", "#place-order-btn", function(e){
 			e.preventDefault();
 			console.log("pay on delivery");
-			let address_id=$('input[name="address-id"]').val();
+			let address_id=$('input[name="address-id"]:checked').val();
 			let product_id=$('input[name="product-id"]').val();
 
 			
@@ -704,22 +704,57 @@
 					data: {product_id: product_id, address_id: address_id, payment_mode: 'pod'},
 					success: function(data)
 					{
+						data=JSON.parse(data)
 						console.log(data);
-						if(data==1)
+
+						if(data.status===1)
 						{
 							console.log("Successfully ordered");
-							window.location.href = $('#place-order-btn').attr('href');
+							window.open(`${$('#place-order-btn').attr('href')}?oid=${data.order_id}`, '_self');
 						}
-						else if(data==0)
+						else if(data.status===0)
 						{
 							console.log("Failed to order");
 							// window.location.href = $('#place-order-btn').attr('href');
 						}
+						else
+						{
+							console.log(data);
+						}
 					}
 				});
+				console.log(product_id, address_id);
 			}
 
-		})
+		});
+
+
+		// code for when on cancel address form
+		$(document).on("click", ".cancel-order-btn", function(e) {
+			e.preventDefault();
+
+			let order_id=$(this).data("order-id");
+
+			$.ajax({
+				url: "api/cancelOrderApi.php",
+				type: "POST",
+				data: {order_id: order_id},
+				success: function(data) {
+					if (data == 0) {
+						console.log(order_id, "could't cancel the order");
+					} 
+					else if (data == 1) {
+						console.log(order_id, "order canceled ");
+						location.reload();
+					} 
+					else {
+						console.log(data);
+					}
+				}
+			});
+
+		});
+
 
 
 

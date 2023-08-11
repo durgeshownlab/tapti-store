@@ -145,7 +145,7 @@
                                 </div>
                             </div>
 
-                            <a href="confirm.html" class="btn_1 full-width" id="place-order-btn">Confirm and Order</a>
+                            <a href="confirm.php" class="btn_1 full-width" id="place-order-btn">Confirm and Order</a>
                     </div>
                     <!-- /box_general -->
                 </div>

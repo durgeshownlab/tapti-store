@@ -32,6 +32,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
 
 	<!-- BASE CSS -->
+	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap.custom.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 
@@ -47,6 +48,7 @@
 	<link href="css/listing.css" rel="stylesheet">
 	<link href="css/cart.css" rel="stylesheet">
 	<link href="css/checkout.css" rel="stylesheet">
+	<link href="css/orderEvent.css" rel="stylesheet">
 
 	<!-- font awesome cdn link -->
     <script src="https://kit.fontawesome.com/ca7271c9b6.js" crossorigin="anonymous"></script>
@@ -164,10 +166,7 @@
 											<div class="dropdown-menu">
 												<ul>
 													<li>
-														<a href="track-order.html"><i class="ti-truck"></i>Track your Order</a>
-													</li>
-													<li>
-														<a href="account.html"><i class="ti-package"></i>My Orders</a>
+														<a href="myOrders.php"><i class="ti-package"></i>My Orders</a>
 													</li>
 													<li>
 														<a href="account.html"><i class="ti-user"></i>My Profile</a>
@@ -212,4 +211,9 @@
 			</div>
 			<!-- /main_header -->
 		</header>
+
+		
+		<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="exampleModalFullscreenXxlLabel" aria-modal="true" role="dialog">
+  
+  		</div>
 		<!-- /header ---->

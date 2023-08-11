@@ -9,12 +9,9 @@ $product_id = $_GET['pid'];
 $sql = "SELECT * FROM products where product_id = {$product_id} and is_deleted=0";
 $result = mysqli_query($con, $sql);
 
-if(mysqli_num_rows($result)==1)
-{
-	$product=mysqli_fetch_assoc($result);
-}
-else
-{
+if (mysqli_num_rows($result) == 1) {
+	$product = mysqli_fetch_assoc($result);
+} else {
 	exit;
 }
 
@@ -22,12 +19,9 @@ else
 $sql = "SELECT * FROM sub_category where sub_category_id = {$product['sub_category_id']} and is_deleted=0";
 $result = mysqli_query($con, $sql);
 
-if(mysqli_num_rows($result)==1)
-{
-	$sub_category=mysqli_fetch_assoc($result);
-}
-else
-{
+if (mysqli_num_rows($result) == 1) {
+	$sub_category = mysqli_fetch_assoc($result);
+} else {
 	exit;
 }
 
@@ -35,12 +29,9 @@ else
 $sql = "SELECT * FROM category where id = {$sub_category['category_id']} and is_deleted=0";
 $result = mysqli_query($con, $sql);
 
-if(mysqli_num_rows($result)==1)
-{
-	$category=mysqli_fetch_assoc($result);
-}
-else
-{
+if (mysqli_num_rows($result) == 1) {
+	$category = mysqli_fetch_assoc($result);
+} else {
 	exit;
 }
 
@@ -81,35 +72,34 @@ else
 								<div class="owl-stage"
 									style="transform: translate3d(-2320px, 0px, 0px); transition: all 0.25s ease 0s; width: 3480px;">
 									<div class="owl-item" style="width: 580px;">
-										<div style="background-image: url(images/products/<?=$product['product_image'];  ?>);" class="item-box">
+										<div style="background-image: url(images/products/<?= $product['product_image'];  ?>);"
+											class="item-box">
 										</div>
 									</div>
-<?php 
-	// for getting the images from the product images table 
-$sql = "SELECT * FROM product_images where product_id = {$product_id} and is_deleted=0";
-$result = mysqli_query($con, $sql);
+									<?php
+									// for getting the images from the product images table 
+									$sql = "SELECT * FROM product_images where product_id = {$product_id} and is_deleted=0";
+									$result = mysqli_query($con, $sql);
 
-if(mysqli_num_rows($result)>0)
-{
-	while($image=mysqli_fetch_assoc($result))
-	{
-		echo '
+									if (mysqli_num_rows($result) > 0) {
+										while ($image = mysqli_fetch_assoc($result)) {
+											echo '
 			<div class="owl-item" style="width: 580px;">
-				<div style="background-image: url(images/products/'.$image['image_path'].');" class="item-box">
+				<div style="background-image: url(images/products/' . $image['image_path'] . ');" class="item-box">
 				</div>
 			</div>
 		';
-	}
-}
+										}
+									}
 
 
-?>
+									?>
 
 									<!-- <div class="owl-item" style="width: 580px;">
 										<div style="background-image: url(img/products/shoes/2.jpg);" class="item-box">
 										</div>
 									</div> -->
-									
+
 								</div>
 							</div>
 							<div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span
@@ -133,29 +123,28 @@ if(mysqli_num_rows($result)>0)
 									style="transform: translate3d(-119px, 0px, 0px); transition: all 0.25s ease 0s; width: 714px;">
 
 									<div class="owl-item" style="width: 104px; margin-right: 15px;">
-										<div style="background-image: url(images/products/<?=$product['product_image'];  ?>);" class="item">
+										<div style="background-image: url(images/products/<?= $product['product_image'];  ?>);"
+											class="item">
 										</div>
 									</div>
-<?php 
-	// for getting the images from the product images table 
-$sql = "SELECT * FROM product_images where product_id = {$product_id} and is_deleted=0";
-$result = mysqli_query($con, $sql);
+									<?php
+									// for getting the images from the product images table 
+									$sql = "SELECT * FROM product_images where product_id = {$product_id} and is_deleted=0";
+									$result = mysqli_query($con, $sql);
 
-if(mysqli_num_rows($result)>0)
-{
-	while($image=mysqli_fetch_assoc($result))
-	{
-		echo '
+									if (mysqli_num_rows($result) > 0) {
+										while ($image = mysqli_fetch_assoc($result)) {
+											echo '
 		<div class="owl-item active" style="width: 104px; margin-right: 15px;">
-			<div style="background-image: url(images/products/'.$image['image_path'].');" class="item">
+			<div style="background-image: url(images/products/' . $image['image_path'] . ');" class="item">
 			</div>
 		</div>
 		';
-	}
-}
+										}
+									}
 
 
-?>									
+									?>
 								</div>
 							</div>
 							<div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><span
@@ -164,7 +153,7 @@ if(mysqli_num_rows($result)>0)
 							<div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button
 									role="button" class="owl-dot active"><span></span></button></div>
 						</div>
-						<div class="left-t"></div>	
+						<div class="left-t"></div>
 						<div class="right-t"></div>
 					</div>
 				</div>
@@ -192,15 +181,17 @@ if(mysqli_num_rows($result)>0)
 							<input type="number" value="1" id="quantity-value" name="quantity-value">
 
 							<div class="quantity-inc-btn">+</div>
-							
+
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-5 col-md-6">
-							<div class="price_main"><span class="new_price">&#8377; <?= number_format($product['product_price']) ?></span></div>
+							<div class="price_main"><span class="new_price">&#8377;
+									<?= number_format($product['product_price']) ?></span></div>
 						</div>
 						<div class="col-lg-4 col-md-6">
-							<div class="btn_add_to_cart"><a href="checkout.php?pid=<?= $_GET['pid'] ?>" class="btn_1 buy-now-btn" data-product-id="<?= $_GET['pid'] ?>">Buy Now</a></div>
+							<div class="btn_add_to_cart"><a href="checkout.php?pid=<?= $_GET['pid'] ?>"
+									class="btn_1 buy-now-btn" data-product-id="<?= $_GET['pid'] ?>">Buy Now</a></div>
 						</div>
 					</div>
 				</div>
@@ -208,36 +199,27 @@ if(mysqli_num_rows($result)>0)
 				<div class="product_actions">
 					<ul>
 						<li>
-							<a href="#" class="add-wishlist-btn" data-product-id="<?= $product_id; ?>"><i class="fa-solid fa-heart"
-							
+							<a href="#" class="add-wishlist-btn" data-product-id="<?= $product_id; ?>"><i
+									class="fa-solid fa-heart" <?php
 
-							<?php
+									if (isset($_SESSION['user_id'])) {
+										$sql1 = "select * from wishlists where user_id={$_SESSION['user_id']} and product_id={$product_id} and is_deleted=0";
+										$result1 = mysqli_query($con, $sql1);
 
-								if(isset($_SESSION['user_id']))
-								{
-									$sql1="select * from wishlists where user_id={$_SESSION['user_id']} and product_id={$product_id} and is_deleted=0";
-									$result1=mysqli_query($con, $sql1);
-
-									if(mysqli_num_rows($result1)>0)
-									{
-										echo 'style="color: red;"';
+										if (mysqli_num_rows($result1) > 0) {
+											echo 'style="color: red;"';
+										} else {
+											echo 'style="color: #fff; text-shadow: 0 0 1px rgb(0, 0, 0);"';
+										}
+									} else {
+										echo 'style="color: #fff; text-shadow: 0 0 3px rgb(0, 0, 0);"';
 									}
-									else
-									{
-										echo 'style="color: #fff; text-shadow: 0 0 1px rgb(0, 0, 0);"';
-									}
-								}
-								else
-								{
-									echo 'style="color: #fff; text-shadow: 0 0 3px rgb(0, 0, 0);"';
-								}
 
-							?>
-
-							></i><span>Add to Wishlist</span></a>
+									?>></i><span>Add to Wishlist</span></a>
 						</li>
 						<li>
-							<a href="#" class="add-cart-btn" data-product-id="<?= $product_id; ?>"><i class="ti-shopping-cart"></i><span>Add to Cart</span></a>
+							<a href="#" class="add-cart-btn" data-product-id="<?= $product_id; ?>"><i
+									class="ti-shopping-cart"></i><span>Add to Cart</span></a>
 						</li>
 					</ul>
 				</div>
@@ -251,24 +233,22 @@ if(mysqli_num_rows($result)>0)
 
 
 
-							<?php
+								<?php
 
-								$sql1="select * from specifications where product_id={$product_id} and is_deleted=0";
-								$result1=mysqli_query($con, $sql1);
+								$sql1 = "select * from specifications where product_id={$product_id} and is_deleted=0";
+								$result1 = mysqli_query($con, $sql1);
 
-								if(mysqli_num_rows($result1)>0)
-								{
-									while($specification=mysqli_fetch_assoc($result1))
-									{
+								if (mysqli_num_rows($result1) > 0) {
+									while ($specification = mysqli_fetch_assoc($result1)) {
 										echo '	
 											<tr>
-												<td><strong>'.$specification['name'].'</strong></td>
-												<td>'.$specification['value'].'</td>
+												<td><strong>' . $specification['name'] . '</strong></td>
+												<td>' . $specification['value'] . '</td>
 											</tr>';
 									}
 								}
 
-							?>
+								?>
 
 
 							</tbody>
@@ -285,6 +265,95 @@ if(mysqli_num_rows($result)>0)
 
 
 
+	<!-- code for related product  -->
+
+
+	<div class="container margin_60_35">
+		<div class="main_title">
+			<h2>Related</h2>
+			<span>Products</span>
+			<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+		</div>
+		<div class="owl-carousel owl-theme products_carousel owl-loaded owl-drag">
+
+			<!-- /item -->
+
+			<!-- /item -->
+
+			<!-- /item -->
+
+			<!-- /item -->
+
+			<!-- /item -->
+			<div class="owl-stage-outer">
+				<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1500px;">
+					
+
+
+<?php 
+
+$sql="select category.id as cat_id from products join sub_category on products.sub_category_id=sub_category.sub_category_id JOIN category on sub_category.category_id=category.id where products.product_id={$product_id} and sub_category.is_deleted=0 and category.is_deleted=0 and products.is_deleted=0";
+$result=mysqli_query($con, $sql);
+
+if(mysqli_num_rows($result)>0)
+{
+	$row=mysqli_fetch_assoc($result);
+	$cat_id=$row['cat_id'];
+}
+
+$sql="select products.product_id as product_id, products.product_name as product_name, products.product_price as product_price, products.product_image as product_image from products join sub_category on products.sub_category_id=sub_category.sub_category_id JOIN category on sub_category.category_id=category.id where category.id={$cat_id} and products.product_id != {$product_id} and sub_category.is_deleted=0 and category.is_deleted=0 and products.is_deleted=0 order by rand()";
+
+$result=mysqli_query($con, $sql);
+
+if(mysqli_num_rows($result)>0)
+{
+	while($row=mysqli_fetch_assoc($result))
+	{
+		echo '
+
+		<div class="owl-item active" style="width: 290px; margin-right: 10px;">
+			<div class="item">
+				<div class="grid_item">
+					<figure>
+						<a href="details.php?pid='.$row['product_id'].'">
+							<img class="owl-lazy" src="images/products/'.$row['product_image'].'"
+								data-src="images/products/'.$row['product_image'].'" alt="" style="opacity: 1;">
+						</a>
+					</figure>
+
+					<a href="details.php?pid='.$row['product_id'].'">
+						<h3>'.ucwords($row['product_name']).'</h3>
+					</a>
+					<div class="price_box">
+						<span class="new_price">&#8377;'. number_format($row['product_price']) .'</span>
+					</div>
+				</div>
+				<!-- /grid_item -->
+			</div>
+		</div>
+		
+		';
+	}
+}
+
+
+
+
+?>
+
+
+					
+
+
+				</div>
+			</div>
+			<div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i
+						class="ti-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i
+						class="ti-angle-right"></i></button></div>
+			<div class="owl-dots disabled"></div>
+		</div>
+		<!-- /products_carousel -->
+	</div>
 
 
 
