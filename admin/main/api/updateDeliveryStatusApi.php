@@ -55,7 +55,7 @@
     }
     else
     {
-        $sql="update orders set delivery_status='{$delivery_status}', order_status='delivered', order_event='{$json_order_event_data}' where order_id='{$order_id}' and is_deleted=0";
+        $sql="update orders set delivery_status='{$delivery_status}', order_event='{$json_order_event_data}' where order_id='{$order_id}' and is_deleted=0";
         $result=mysqli_query($conn, $sql);
         if($result)
         {

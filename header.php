@@ -98,7 +98,7 @@
 												<div class="col-lg-4">
 													<h3></h3>
 													<ul>
-														<?php $sql = mysqli_query($con, "select * from category WHERE  id IN (1,3,6,7,8,9)");
+														<?php $sql = mysqli_query($con, "select * from category WHERE  id IN (1,3,6,7,8,9) and is_deleted=0");
 														while ($row = mysqli_fetch_assoc($sql)) {
 															$name = $row['name'];
 															$cat_id = $row['id'];
@@ -159,7 +159,9 @@
 								<?php 
 								if(isset($_SESSION['user_id'])) 
 								{
+
 									echo '
+									
 									<li>
 										<div class="dropdown dropdown-access">
 											<a href="#" class="access_link" data-toggle="dropdown"><span>Account</span></a>
@@ -169,7 +171,7 @@
 														<a href="myOrders.php"><i class="ti-package"></i>My Orders</a>
 													</li>
 													<li>
-														<a href="account.html"><i class="ti-user"></i>My Profile</a>
+														<a href="account.php"><i class="ti-user"></i>My Profile</a>
 													</li>
 													<li>
 														<a href="logout.php"><i class="ti-help-alt"></i>Logout</a>
@@ -211,9 +213,4 @@
 			</div>
 			<!-- /main_header -->
 		</header>
-
-		
-		<div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="exampleModalFullscreenXxlLabel" aria-modal="true" role="dialog">
-  
-  		</div>
 		<!-- /header ---->
