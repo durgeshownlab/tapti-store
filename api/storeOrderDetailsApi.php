@@ -3,8 +3,6 @@
 include("_connection.php");
 include("_session.php");
 
-
-
 $address_id= $_POST['address_id'];
 $product_id= $_POST['product_id'];
 

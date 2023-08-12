@@ -122,7 +122,7 @@ else
                             <span>Total</span>&#8377; <?= number_format($total_price);?>
                         </li>
                     </ul>
-                    <a href="cart-2.html" class="btn_1 full-width cart">Proceed to Checkout</a>
+                    <a href="cartCheckout.php" class="btn_1 full-width cart">Proceed to Checkout</a>
                 </div>
             </div>
         </div>

@@ -21,9 +21,8 @@
                         </svg>
                     </div>
                 <h2>Order completed!</h2>
-                <p>Order Id : <?= $_GET['oid'] ?> </p>
 
-                <a href="orderDetails.php?Oid=<?= $_GET['oid'] ?>" class="btn btn-primary ">View Details </a>
+                <a href="myOrders.php" class="btn btn-primary ">View Cart </a>
                 </div>
             </div>
         </div>

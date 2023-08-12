@@ -55,7 +55,7 @@
                                     <div class="thumb_cart">
                                         <img src="images/products/' . $product['product_image'] . '" data-src="images/products/' . $product['product_image'] . '" class="lazy loaded" alt="Image" data-was-processed="true" style="width: 50px; height: auto;">
                                     </div>
-                                    <span class="item_cart">' . ucwords($product['product_name']) . '</span>
+                                    <span class="item_cart"><a href="details.php?pid='.$product['product_id'].'">' . ucwords($product['product_name']) . '</a></span>
                                 </td>
                                 <td>
                                     <strong>' . $order['order_id'] . '</strong>

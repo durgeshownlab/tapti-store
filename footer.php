@@ -35,7 +35,8 @@
 		<hr>
 		<div class="row add_bottom_50">
 			<div class="col-12 text-center">
-				<h5>All Rights Reserved By Tapti Store Developed & Managed By <span style="color:#ec4353;">GrowbusinessforSURE</span></h5>
+				<h5>All Rights Reserved By Tapti Store Developed & Managed By <span style="color:#ec4353;"><a href="https://www.growbusinessforsure.com/
+				">GrowbusinessforSURE</a></span></h5>
 			</div>
 		</div>
 	</div>
@@ -43,9 +44,6 @@
 <!--/footer-->
 </div>
 <!-- page -->
-<a href="#" class="whatsapp_img" id="whts">
-	<img src="img/whatsapp.gif" alt="">
-</a>
 <div id="toTop"></div><!-- Back to top button -->
 
 
@@ -61,12 +59,19 @@
 
 <script>
 	$(document).ready(function(){
+
+		// code for first call on the page 
 		console.log('logg okk.....');
 		cartItemCount();
 		let rand=generateRandomNumber();
 		$('.captcha').html(rand);
 		$('.captcha').attr('data-captcha', rand);
 
+// 88888888888888888888888888888888888888888888888888888888888888888888888
+// event handeling area 
+// 88888888888888888888888888888888888888888888888888888888888888888888888
+
+		
 		// code for when click on trash icon in wishlist page
 		$(document).on("click", ".add-wishlist-btn", async function(e) {
 			e.preventDefault();
@@ -434,7 +439,7 @@
                                     <input type="text" class="form-control" placeholder="Name" name="customer-name" id="customer-name">
                                 </div>
                                 <div class="col-6 form-group pl-1">
-                                    <input type="text" class="form-control" placeholder="Mobile"  name="customer-mobile-number" id="customer-mobile-number">
+                                    <input type="text" class="form-control" placeholder="Mobile"  name="customer-mobile-number" id="customer-mobile-number" maxlength="10" minlength="10">
                                 </div>
                             </div>
                             <div class="row no-gutters">
@@ -683,7 +688,11 @@
 			let user_captcha=parseInt($('#customer-captcha').val());
 			
 			console.log(backend_captcha, user_captcha);
-			if(backend_captcha=='' || user_captcha=='')
+			if($('input[name="address-id"]:checked').length === 0)
+			{
+				alert("Please Select Address");
+			}
+			else if(backend_captcha=='' || user_captcha=='')
 			{
 				alert("Please Enter Captcha Code");
 			}
@@ -691,10 +700,7 @@
 			{
 				alert("Please Enter Valid Captcha Code");
 			}
-			else if($('input[name="address-id"]:checked').length === 0)
-			{
-				alert("Please Select Address");
-			}
+			
 			else if(backend_captcha==user_captcha)
 			{
 				console.log('Order completed');
@@ -728,30 +734,91 @@
 
 		});
 
+		//000000000000000000000000000000000000000000000000000000000000000000000000
+		//  code for pay on delivery on whole cart
+		//000000000000000000000000000000000000000000000000000000000000000000000000
+		$(document).on("click", "#place-cart-order-btn", function(e){
+			e.preventDefault();
+			console.log("cart pay on delivery");
+			let address_id=$('input[name="address-id"]:checked').val();
+			let product_id=$('input[name="product-id"]').val();
+
+			
+			let backend_captcha=$('.captcha').attr('data-captcha');
+			let user_captcha=parseInt($('#customer-captcha').val());
+			
+			console.log(backend_captcha, user_captcha);
+			if($('input[name="address-id"]:checked').length === 0)
+			{
+				alert("Please Select Address");
+			}
+			else if(backend_captcha=='' || user_captcha=='')
+			{
+				alert("Please Enter Captcha Code");
+			}
+			else if(backend_captcha!=user_captcha)
+			{
+				alert("Please Enter Valid Captcha Code");
+			}
+			else if(backend_captcha==user_captcha)
+			{
+				console.log('Order completed');
+				$.ajax({
+					url: "api/storeCartOrderDetailsApi.php",
+					type: "POST",
+					data: {address_id: address_id, payment_mode: 'pod'},
+					success: function(data)
+					{
+						data=JSON.parse(data)
+						console.log(data);
+
+						if(data.status===1)
+						{
+							console.log("Successfully ordered");
+							window.open(`${$('#place-cart-order-btn').attr('href')}`, '_self');
+						}
+						else if(data.status===0)
+						{
+							console.log("Failed to order");
+							// window.location.href = $('#place-order-btn').attr('href');
+						}
+						else
+						{
+							console.log(data);
+						}
+					}
+				});
+				console.log(address_id);
+			}
+
+		});
+
 
 		// code for when on cancel address form
 		$(document).on("click", ".cancel-order-btn", function(e) {
 			e.preventDefault();
 
 			let order_id=$(this).data("order-id");
-
-			$.ajax({
-				url: "api/cancelOrderApi.php",
-				type: "POST",
-				data: {order_id: order_id},
-				success: function(data) {
-					if (data == 0) {
-						console.log(order_id, "could't cancel the order");
-					} 
-					else if (data == 1) {
-						console.log(order_id, "order canceled ");
-						location.reload();
-					} 
-					else {
-						console.log(data);
+			if(confirm('Do You Realy want to cancel the order'))
+			{
+				$.ajax({
+					url: "api/cancelOrderApi.php",
+					type: "POST",
+					data: {order_id: order_id},
+					success: function(data) {
+						if (data == 0) {
+							console.log(order_id, "could't cancel the order");
+						} 
+						else if (data == 1) {
+							console.log(order_id, "order canceled ");
+							location.reload();
+						} 
+						else {
+							console.log(data);
+						}
 					}
-				}
-			});
+				});
+			}
 
 		});
 

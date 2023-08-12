@@ -1,4 +1,10 @@
-<?php include("header.php"); ?>
+<?php include("header.php"); 
+
+if(!isset($_SESSION['user_id']))
+{
+    echo "<script>window.location.href = 'index.php';  </script>";
+}
+?>
 
 
 <?php
@@ -43,13 +49,13 @@ if(mysqli_num_rows($result_for_address)>0)
             </div>
 
             <div class="row px-3">
-                <div class="col bg-white px-5 py-2 d-flex align-items-center justify-content-between">
+                <div class="bg-white col-md-4 d-flex justify-content-center align-items-center">
                     <img src="images/products/64c8f7b83e1ca8.07852535.jpeg" class="rounded float-start" alt="..." style="width: auto; height: 200px;">
                 </div>  
 
-                <div class="col bg-white p-2">
+                <div class="col-md-4 bg-white p-2">
                     <div>
-                        <b><?= $row_for_product['product_name'] ?></b>
+                        <b><?= ucwords($row_for_product['product_name']) ?></b>
                         <p><?= $row_for_product['product_desc'] ?></p>
                     </div>
 
@@ -60,7 +66,7 @@ if(mysqli_num_rows($result_for_address)>0)
 
                     <div>
                         <b>Total Price: </b>
-                        <p>₹<?= $row['total_price'] ?></p>
+                        <p>₹<?= number_format($row['total_price']) ?></p>
                     </div>
 
                     <div>
@@ -82,7 +88,7 @@ if(mysqli_num_rows($result_for_address)>0)
                     </div>
                 </div>  
 
-                <div class="col bg-white p-2">
+                <div class="col-md-4 bg-white p-2 mt-md-2">
                     <div>
                         <h5 class="pb-1">Address</h5>
                     </div>
