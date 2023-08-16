@@ -9,7 +9,7 @@
 						<div class="row justify-content-center justify-content-md-start">
 							<div class="col-lg-6 static">
 								<div class="slide-text white">
-									<h2 class="owl-slide-animated owl-slide-title">Welcome to<br>Glory Houz</h2>
+									<h2 class="owl-slide-animated owl-slide-title">Welcome to<br>Tapti Store</h2>
 									<p class="owl-slide-animated owl-slide-subtitle">
 										India's Leading Manufacturer of Ready Made Garments
 									</p>
@@ -180,7 +180,7 @@
 			<div class="container margin_60">
 				<div class="row justify-content-center justify-content-md-start">
 					<div class="col-lg-6 wow" data-wow-offset="150">
-						<h3>Glory Houz</h3>
+						<h3>Tapti Store</h3>
 						<p>Ready-made Garments Supplier/ Manufacture from Tamil-Nadu</p>
 						<div class="feat_text_block">
 							<a class="btn_1" href="contact.php" role="button">Contact Now</a>
