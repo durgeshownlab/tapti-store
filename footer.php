@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-lg-6 col-md-6">
 				<img class="w-50" src="img/brands/logo.png" alt="responsive-image">
-				<p>Glory Houz is a manufacturer of ready-made garments for men. We have all garments, including polo t-shirts, sleeveless tees, joggers, shorts, sportswear, home wear, inners, etc. We are the manufacturer and supplier of men’s garments and always make quality products. <a href="about.php">Read More</a></p>
+				<p>Tapti Store is a manufacturer of ready-made garments for men. We have all garments, including polo t-shirts, sleeveless tees, joggers, shorts, sportswear, home wear, inners, etc. We are the manufacturer and supplier of men’s garments and always make quality products. <a href="about.php">Read More</a></p>
 			</div>
 
 			<div class="col-lg-3 col-md-6">
@@ -13,7 +13,6 @@
 						<li><a href="index.php">Home</a></li>
 						<li><a href="about.php">About</a></li>
 						<li><a href="contact.php">Contact</a></li>
-
 					</ul>
 				</div>
 			</div>
@@ -22,11 +21,9 @@
 				<div class="collapse dont-collapse-sm contacts" id="collapse_3">
 					<ul>
 						<li><i class="ti-user"></i>Mr.K.MEZHI SELVAN</li>
-						<li><i class="ti-home"></i>1/3, GROUND FLOOR, VADAKKU THOTTAM, MANGALAM
-							MAIN ROAD, PARAPALAYAM
-						</li>
-						<li><i class="ti-headphone-alt"></i>+91-9994923717</li>
-						<li><i class="ti-email"></i><a href="#0">ml1@gloryhouse.info</a></li>
+						<li><i class="ti-home"></i>333/334, 2nd floor L extension Mohan garden uttam nagar New Delhi -110059</li>
+						<li><i class="ti-headphone-alt"></i><a href="tel:+91-9718417680">+91-9718417680</a></li>
+						<li><i class="ti-email"></i><a href="mailto:taptimusicals@gmail.com">taptimusicals@gmail.com</a></li>
 					</ul>
 				</div>
 			</div>
@@ -823,6 +820,67 @@
 		});
 
 
+		// code for click on submit button of contact us page 
+
+		$(document).on("click", "#submit-contact-us-btn", function(e) {
+			e.preventDefault();
+			let name=$('#contact-name').val();
+			let email=$('#contact-email').val();
+			let msg=$('#contact-msg').val();
+			if(name=='')
+			{
+				alert("Please Enter Your Name");
+			}
+			else if(email=="")
+			{
+				alert("Please Enter Your Email");
+			}
+			else if(!validateEmail(email))
+			{
+				alert("Please Enter a Valid Email");
+			}
+			else if(msg=="")
+			{
+				alert("Please Enter Message");
+			}
+			else
+			{
+				let formData=new FormData();
+				formData.append('name', name);
+				formData.append('email', email);
+				formData.append('msg', msg);
+				$.ajax({
+					url: "api/sendContactUsApi.php",
+					type: "POST",
+					data: formData,
+					contentType: false,
+					processData: false,
+					success: function(data) {
+						if (data == 0) {
+							console.log("could't send the message");
+							$('#contact-name').val('');
+							$('#contact-email').val('');
+							$('#contact-msg').val('');
+							alert("Something Went Wrong, Please Try Again");
+						} 
+						else if (data == 1) {
+							console.log("Message Sent");
+							$('#contact-name').val('');
+							$('#contact-email').val('');
+							$('#contact-msg').val('');
+							// location.reload();
+							alert("We Recived Your Message, Our Team Will Reach You Soon");
+						} 
+						else {
+							console.log(data);
+						}
+					}
+				});
+			}
+
+		});
+
+
 
 
 		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -886,6 +944,14 @@
             // Mobile number is not valid
             return false;
         }
+
+		function validateEmail(email) {
+			// Regular expression pattern for a valid email address
+			const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+			// Test the email against the pattern
+			return emailPattern.test(email);
+		}
 
 		// function for loading cart count
 		function cartItemCount() {

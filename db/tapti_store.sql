@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2023 at 02:39 PM
+-- Generation Time: Aug 16, 2023 at 11:54 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -122,6 +122,28 @@ INSERT INTO `category` (`id`, `name`, `image`, `is_deleted`, `timestamp`) VALUES
 (49, 'test', '64c9fda216c290.26303472.jpg', 1, '2023-08-02 06:54:26'),
 (50, 'test3354', '64ca1b00811a33.58144590.jpg', 1, '2023-08-02 07:56:03'),
 (51, 'test', '64ca5364e88ac1.51188159.jpg', 1, '2023-08-02 13:00:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_us`
+--
+
+CREATE TABLE `contact_us` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `time_stamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact_us`
+--
+
+INSERT INTO `contact_us` (`id`, `name`, `email`, `message`, `time_stamp`) VALUES
+(1, 'durgesh', 'durgesg@gmail.xcom', 'sdfsf', '2023-08-16 09:53:36'),
+(2, 'test', 'test@gmail.com', 'test message', '2023-08-16 09:54:27');
 
 -- --------------------------------------------------------
 
@@ -474,6 +496,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -553,6 +581,12 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `contact_us`
+--
+ALTER TABLE `contact_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `orders`

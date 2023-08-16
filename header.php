@@ -192,9 +192,6 @@
 									</li>
 									<li>
 										<a href="wishlists.php" class="wishlist"><span>Wishlist</span></a>
-									</li>
-									<li>
-										<a href="javascript:void(0);" class="btn_search_mob"><span>Search</span></a>
 									</li>';
 								}
 								else
